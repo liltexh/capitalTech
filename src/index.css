@@ -1,0 +1,150 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+	font-family: "Open_sans";
+	src: url(./assets/fonts/OpenSans-VariableFont_wdth,wght.ttf);
+}
+
+@font-face {
+	font-family: "Open_sans_italic";
+	src: url(./assets/fonts/OpenSans-Italic-VariableFont_wdth,wght.ttf);
+}
+
+:root {
+	/* Primary, Secondary, and Accent Colors */
+	--primary-color: rgb(0, 53, 102); /* Deep Blue */
+	--secondary-color: rgb(0, 29, 61); /* Dark Navy */
+	--accent-color: rgb(251, 191, 36); /* Golden Yellow */
+	--highlight-color: rgb(240, 203, 70); /* Bright Yellow */
+
+	/*Font Family*/
+	--fontF-primary: "Open_sans";
+	--fontF-secondary: "Open_sans_italic"; /* Background and Text Colors */
+	--background-color: rgb(0, 8, 20); /* Almost Black */
+	--text-color-primary: rgb(245, 241, 235); /* White for contrast */
+	--text-color-secondary: rgb(
+		176,
+		176,
+		176
+	); /* Light Gray for secondary text */
+
+	/* Border Colors */
+	--border-color: rgb(0, 53, 102); /* Same as primary color */
+
+	/* Button Colors */
+	--button-primary-bg: var(--primary-color);
+	--button-secondary-bg: var(--secondary-color);
+	--button-accent-bg: var(--accent-color);
+	--button-hover-bg: var(--highlight-color);
+	--button-text-color: var(--text-color-primary);
+
+	/* Button Styles */
+	--button-border-radius: 0.5rem; /* Rounded corners */
+	--button-padding: 0.5rem 1rem; /* Padding for buttons */
+	--button-font-size: 1rem; /* Button font size (Tailwind’s default) */
+
+	/* Shadows and Effects */
+	--box-shadow: 0 4px 4px rgba(255, 255, 255, 0.1); /* Light Off-White Shadow */
+	--hover-shadow: 0 6px 8px rgba(255, 255, 255, 0.15); /* Light Off-White Hover
+Shadow */
+	--sec-box-shadow: rgba(240, 203, 70, 0.7);
+}
+
+body {
+	background-color: var(--background-color);
+	font-family: var(--fontF-primary);
+	z-index: -99999;
+}
+
+* {
+	color: var(--text-color-primary);
+	margin: 0;
+	padding: 0;
+}
+
+.main-shadow {
+	box-shadow: var(--box-shadow);
+}
+
+.back_background {
+	background-size: cover;
+	background-position: center;
+	width: 100%;
+	height: auto;
+}
+
+.front_blur_background {
+	background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent dark background */
+	width: 100%;
+	height: 100%;
+	backdrop-filter: blur(8px); /* Apply a blur effect */
+	-webkit-backdrop-filter: blur(8px); /* For Safari support */
+}
+
+.main_button {
+	background-color: rgb(251, 191, 36);
+	color: black;
+	font-weight: 600;
+	text-align: center;
+	padding: 0.3rem 1.4rem; /* Adjusts padding (py-2 and px-4 in Tailwind) */
+	border-radius: 0.375rem; /* Corresponds to Tailwind's rounded class */
+	box-shadow: 0px 2px 8px rgba(255, 255, 255, 0.4); /* Medium shadow */
+	cursor: pointer;
+	transition:
+		box-shadow 0.4s ease,
+		transform 0.4s ease; /* Smooth transition */
+}
+
+.main_button:hover {
+	box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+	/* Keeps the same background color on hover */
+	transform: scale(1.2);
+}
+
+.main_button:active {
+	box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2); /* Reduces shadow on click */
+	transform: scale(0.8); /* Scales down on click */
+}
+
+.Plan_card {
+	position: relative;
+	width: 22rem;
+	height: 34rem;
+	background-size: cover;
+	background-position: center;
+	overflow: auto;
+	margin: 20px;
+}
+
+.Plan_card_blur {
+	background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent dark background */
+	width: 100%;
+	height: 100%;
+	backdrop-filter: blur(2px); /* Apply a blur effect */
+	-webkit-backdrop-filter: blur(2px); /* For Safari support */
+}
+
+.Plan_card span {
+	width: 83.33333%; /* equivalent to w-10/12 */
+	margin-left: auto; /* equivalent to self-center */
+	margin-right: auto; /* equivalent to self-center */
+	text-align: center; /* equivalent to text-center */
+	position: relative; /* equivalent to relative */
+}
+
+.Plan_card span::after {
+	content: "";
+	display: block;
+	opacity: 0.4;
+	margin: 12px auto;
+	background-color: var(--accent-color); /* equivalent to bg-amber-400 */
+	width: 100%; /* equivalent to w-full */
+	height: 1px; /* equivalent to h-[2px] */
+}
+
+.glowing_shadow {
+	border: 3px solid var(--accent-color);
+	box-shadow: 0 0 16px var(--sec-box-shadow);
+}
