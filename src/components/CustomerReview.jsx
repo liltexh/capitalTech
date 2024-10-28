@@ -20,7 +20,7 @@ const ReviewData = [
 		name: "Lorem ipsum dolor.",
 		position: "Lorem ipsum dolor.",
 		star: 4,
-		img: IstockA
+		img: IstockA,
 	},
 	{
 		context:
@@ -28,14 +28,14 @@ const ReviewData = [
 		name: "Lorem ipsum dolor.",
 		position: "Lorem ipsum dolor.",
 		star: 4,
-		img: IstockB
+		img: IstockB,
 	},
 	{
 		context: "Lorem laboriosam, fugiat natus, molestiae dignissimos amet.",
 		name: "Lorem ipsum dolor.",
 		position: "Lorem ipsum dolor.",
 		star: 4,
-		img: IstockC
+		img: IstockC,
 	},
 	{
 		context:
@@ -43,8 +43,8 @@ const ReviewData = [
 		name: "Lorem ipsum dolor.",
 		position: "Lorem ipsum dolor.",
 		star: 4,
-		img: IstockD
-	}
+		img: IstockD,
+	},
 ];
 
 function ReviewSlide() {
@@ -63,7 +63,7 @@ function ReviewSlide() {
 			} else if (width <= tabletBreakpoint) {
 				setView(2);
 			} else {
-				setView(2);
+				setView(3);
 			}
 		};
 
@@ -89,18 +89,18 @@ function ReviewSlide() {
 		pauseOnHover: true, // Pauses auto-scroll on hover
 		swipe: true, // Allows swiping on touch devices
 		draggable: true, // Enables dragging on desktop devices
-		customPaging: i => (
+		customPaging: (i) => (
 			<div className="slick-dots">
 				<span className="bullet" />
 			</div>
 		),
-		dotsClass: "slick-dots slick-thumb"
+		dotsClass: "slick-dots slick-thumb",
 	};
 
 	return (
 		<section
 			style={{
-				backgroundImage: `url('${BgRepeat}')`
+				backgroundImage: `url('${BgRepeat}')`,
 			}}
 			className="back_background"
 		>
@@ -113,9 +113,9 @@ function ReviewSlide() {
 					<span className="text-amber-400 underline">About Us</span>
 				</h3>
 				<p className="mb-10">
-					Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-					Esse voluptatum eaque earum quos quia? Id aspernatur
-					ratione, voluptas nulla rerum laudantium neque ipsam eaque
+					Lorem ipsum dolor sit, amet consectetur adipisicing elit. Esse
+					voluptatum eaque earum quos quia? Id aspernatur ratione, voluptas
+					nulla rerum laudantium neque ipsam eaque
 				</p>
 
 				<div className="review-slider-container w-full">
@@ -126,9 +126,7 @@ function ReviewSlide() {
 								className="review-slide"
 							>
 								<div className="h-3/5">
-									<p className="review-context">
-										{review.context}
-									</p>
+									<p className="review-context">{review.context}</p>
 								</div>
 								<img
 									src={review.img}
@@ -139,9 +137,7 @@ function ReviewSlide() {
 									<h4 className="review-name text-xl font-semibold">
 										{review.name}
 									</h4>
-									<h4 className="review-position text-xl">
-										{review.position}
-									</h4>
+									<h4 className="review-position text-xl">{review.position}</h4>
 									<span className="review-star">
 										{"⭐".repeat(review.star)}
 									</span>

@@ -18,14 +18,14 @@ export default function Home() {
 		["GOLD IN USD ZONE", "2738.62 USD"],
 		["GOLD IN THE EURO ZONE", "6828.62 EUR"],
 		["24-HOUR TRADING VOLUME", "7283.627"],
-		["OUR ACTIVE TRADERS", "5622.62"]
+		["OUR ACTIVE TRADERS", "5622.62"],
 	];
 
 	return (
 		<>
 			<section
 				style={{
-					backgroundImage: `url('${hero}')`
+					backgroundImage: `url('${hero}')`,
 				}}
 				className="back_background"
 			>
@@ -40,13 +40,12 @@ export default function Home() {
 						</span>
 					</h2>
 					<p>
-						Invest in a Trusted Industry Leader. We prioritize
-						professionalism and reliability, offering essential
-						features to enhance your experience. Count on us for
-						swift returns on your investments while ensuring the
-						security of your capital. Your trust is our top
-						priority, and we are dedicated to maintaining the
-						highest standards of integrity in everything we do.
+						Invest in a Trusted Industry Leader. We prioritize professionalism
+						and reliability, offering essential features to enhance your
+						experience. Count on us for swift returns on your investments while
+						ensuring the security of your capital. Your trust is our top
+						priority, and we are dedicated to maintaining the highest standards
+						of integrity in everything we do.
 					</p>
 					<br />
 					<div>
@@ -59,13 +58,11 @@ export default function Home() {
 				className="flex flex-col justify-center items-center p-16 gap-4
 			border-b-2 border-b-amber-400"
 			>
-				{StockList.map(list => {
+				{StockList.map((list) => {
 					return (
 						<div className="flex flex-col items-center justify-center mb-4">
 							<p className="font-medium">{list[0]}</p>
-							<p className="text-amber-400 text-3xl font-bold">
-								{list[1]}
-							</p>
+							<p className="text-amber-400 text-3xl font-bold">{list[1]}</p>
 						</div>
 					);
 				})}
@@ -73,7 +70,7 @@ export default function Home() {
 
 			<section
 				style={{
-					backgroundImage: `url('${AboutPrevImg}')`
+					backgroundImage: `url('${AboutPrevImg}')`,
 				}}
 				className="back_background "
 			>
@@ -88,26 +85,25 @@ export default function Home() {
 						</span>
 					</h3>
 					<p>
-						We are a global financial firm specializing in
-						investment activities, focusing on trading in financial
-						markets and cryptocurrency exchanges, conducted by
-						experienced and qualified professional traders.
+						We are a global financial firm specializing in investment
+						activities, focusing on trading in financial markets and
+						cryptocurrency exchanges, conducted by experienced and qualified
+						professional traders.
 					</p>
 					<br />
 					<p>
-						Our mission is to deliver a dependable source of high
-						returns for our investors while minimizing risk and
-						ensuring top-tier service. By streamlining and
-						automating the relationship between investors and
-						trustees, we focus on maximizing profitability through
-						strategic investments. We look forward to welcoming you
-						to our community.
+						Our mission is to deliver a dependable source of high returns for
+						our investors while minimizing risk and ensuring top-tier service.
+						By streamlining and automating the relationship between investors
+						and trustees, we focus on maximizing profitability through strategic
+						investments. We look forward to welcoming you to our community.
 					</p>
 					<br />
 					<br />
 					<div>
-					<NavLink to="about"><MainButton text="More Info" /></NavLink>
-						
+						<NavLink to="about">
+							<MainButton text="More Info" />
+						</NavLink>
 					</div>
 				</div>
 			</section>
@@ -125,7 +121,7 @@ export default function Home() {
 
 			<div
 				style={{
-					backgroundImage: `url('${coinImgBg}')`
+					backgroundImage: `url('${coinImgBg}')`,
 				}}
 				className="back_background"
 			>
@@ -136,37 +132,33 @@ export default function Home() {
 					<section className="flex flex-col mb-7 ">
 						<h3 className="self-center text-3xl m-6 font-semibold">
 							Why Choose{" "}
-							<span className="text-amber-400 underline">
-								CapitalTech
-							</span>
+							<span className="text-amber-400 underline">CapitalTech</span>
 						</h3>
 						<p className="text-center">
-							Our goal is to help our investors earn a steady
-							income while keeping their risks low. We are
-							dedicated to providing high-quality service that
-							meets their needs and supports their dreams.
+							Our goal is to help our investors earn a steady income while
+							keeping their risks low. We are dedicated to providing
+							high-quality service that meets their needs and supports their
+							dreams.
 						</p>
 					</section>
 					<ReasonsComponent />
 				</div>
 			</div>
-			<section className="mt-20 mb-20">
+			<section className="flex flex-col justify-center items-center mr-auto ml-auto mt-20 mb-20">
 				<ProfitCalculator />
 			</section>
 			<ReviewSlide />
 			<div className="mb-20">
 				<FAQ />
 			</div>
-
 		</>
 	);
 }
 
-
-		// 	<footer
-		// 		style={{
-		// 			backgroundColor: "rgb(0, 8, 20)",
-		// 			padding: "100px 20px 80px 20px"
-		// 		}}
-		// 		className="home_card"
-		// 	></footer>
+// 	<footer
+// 		style={{
+// 			backgroundColor: "rgb(0, 8, 20)",
+// 			padding: "100px 20px 80px 20px"
+// 		}}
+// 		className="home_card"
+// 	></footer>
