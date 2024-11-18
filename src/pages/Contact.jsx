@@ -8,18 +8,18 @@ import messageIcon from "../assets/Icons/envelope.svg";
 import mapIcon from "../assets/Icons/land-location.svg";
 
 import { NavLink } from "react-router-dom";
-import MainButton from "./MainButton.jsx";
+import MainButton from "../components/MainButton.jsx";
 import "../index.css";
 
 export default function Contact() {
 	const FilterContact = ContactDetails.filter(
-		contact => contact.detail !== ""
+		(contact) => contact.detail !== ""
 	);
 	return (
 		<>
 			<section
 				style={{
-					backgroundImage: `url('${firstSecImg}')`
+					backgroundImage: `url('${firstSecImg}')`,
 				}}
 				className="back_background mb-20"
 			>
@@ -88,9 +88,7 @@ export default function Contact() {
 					<h4 className="text-3xl font-semibold mb-2">
 						Quick <span className="text-amber-400">Support.</span>
 					</h4>
-					<h6 className="font-semibold">
-						Here is our Contact Details
-					</h6>
+					<h6 className="font-semibold">Here is our Contact Details</h6>
 				</div>
 				<div className="grid gap-1 grid-cols-1 md:grid-cols-3 ">
 					{FilterContact.map((contact, idx) => (
@@ -111,13 +109,9 @@ export default function Contact() {
 								</h5>
 							</div>
 							<div className="flex flex-col gap-2">
+								<p className="text-black">{contact.detail[0]}</p>
 								<p className="text-black">
-									{contact.detail[0]}
-								</p>
-								<p className="text-black">
-									{contact.detail[1]
-										? contact.detail[1]
-										: null}
+									{contact.detail[1] ? contact.detail[1] : null}
 								</p>
 							</div>
 						</div>
@@ -132,16 +126,16 @@ const ContactDetails = [
 	{
 		icon: callIcon,
 		prompt: "Call Us",
-		detail: ["0902727726", "6282828829262"]
+		detail: ["0902727726", "6282828829262"],
 	},
 	{
 		icon: messageIcon,
 		prompt: "Mail Us",
-		detail: ["when@gmail.com", "wikend@when.com"]
+		detail: ["when@gmail.com", "wikend@when.com"],
 	},
 	{
 		icon: mapIcon,
 		prompt: "Visit Us",
-		detail: ["dang"]
-	}
+		detail: ["dang"],
+	},
 ];

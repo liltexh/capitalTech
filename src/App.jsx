@@ -3,12 +3,12 @@ import {
 	createBrowserRouter,
 	Route,
 	createRoutesFromElements,
-	RouterProvider
+	RouterProvider,
 } from "react-router-dom";
-import Home from "./components/Home.jsx";
-import Dashboard from "./components/Dashboard.jsx";
-import About from "./components/About.jsx";
-import Contact from "./components/Contact.jsx";
+import Home from "./pages/Home.jsx";
+import Dashboard from "./pages/Dashboard.jsx";
+import About from "./pages/About.jsx";
+import Contact from "./pages/Contact.jsx";
 import "./App.css"; // Make sure to import the CSS file
 
 // DropDown layout import

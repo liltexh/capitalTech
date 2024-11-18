@@ -1,5 +1,5 @@
 import signUpimg from "../assets/images/bitcoin2.jpg";
-import MainButton from "./MainButton.jsx";
+import MainButton from "../components/MainButton.jsx";
 import "../index.css";
 
 export default function Dashboard() {
@@ -12,7 +12,7 @@ export default function Dashboard() {
 			>
 				<div
 					style={{
-						backgroundImage: `url('${signUpimg}')`
+						backgroundImage: `url('${signUpimg}')`,
 					}}
 					className="back_background "
 				>
@@ -21,14 +21,12 @@ export default function Dashboard() {
 					justify-center gap-4 p-10 pl-5 pr-5"
 					>
 						<h2 className="text-2xl font-semibold">
-							Welcome To{" "}
-							<span className="text-amber-400">Capital Tech</span>
+							Welcome To <span className="text-amber-400">Capital Tech</span>
 						</h2>
 						<p>
-							Lorem ipsum dolor sit amet, consectetur adipisicing
-							elit. Blanditiis distinctio delectus repellendus
-							totam obcaecati soluta dignissimos, reprehenderit
-							nostrum quia hic.
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+							Blanditiis distinctio delectus repellendus totam obcaecati soluta
+							dignissimos, reprehenderit nostrum quia hic.
 						</p>
 					</div>
 				</div>
