@@ -12,7 +12,7 @@ import Contact from "./pages/Contact.jsx";
 import "./App.css"; // Make sure to import the CSS file
 
 // DropDown layout import
-import NavBar from "./components/NavBar.jsx";
+import NavBar from "./routes/NavBar.jsx";
 // import DropDown from "./layout/Drop-down.jsx";
 
 const NavRouter = createBrowserRouter(
