@@ -1,7 +1,7 @@
 import logo from "../assets/images/IMG-20241007-WA0033.jpg";
 import profileImg from "../assets/Icons/person-circle-outline.svg";
 import hamburger from "../assets/Icons/hamburger.svg";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import "../CustomStyles/Nav.css";
 import "../index.css";
@@ -24,7 +24,7 @@ export default function NavBar() {
 						alt="logo"
 						className="w-12 rounded-full self-start main-shadow"
 					/>
-					<div className="flex gap-6 md:gap-2 md:gap-2">
+					<div className="flex gap-6 md:gap-2">
 						<img
 							src={profileImg}
 							alt="profile"
