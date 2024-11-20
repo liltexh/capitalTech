@@ -12,9 +12,9 @@ function Auth() {
 	const [phoneNumber, setPhoneNumber] = useState("");
 	const [password, setPassword] = useState("");
 	if (hasAccount) {
-		return <SignIn />;
+		return <SignIn state={{ setHasAccount }} />;
 	} else {
-		return <SignUp />;
+		return <SignUp state={{ setHasAccount }} />;
 	}
 }
 
