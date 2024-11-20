@@ -40,7 +40,7 @@ export default function SignUp() {
 						</p>
 					</div>
 				</div>
-				<div
+				<form
 					className="flex flex-col justify-center p-8 pr-5 pl-5
 				gap-4 "
 				>
@@ -50,6 +50,10 @@ export default function SignUp() {
 						<input
 							type="text"
 							placeholder="Enter full name"
+							onChange={(e) => {
+								setFullName(e.target.value);
+							}}
+							value={fullName}
 							className="bg-transparent w-full h-9 p-5 rounded border border-amber-400
 						"
 						/>
@@ -60,6 +64,10 @@ export default function SignUp() {
 						<input
 							type="text"
 							placeholder="Enter email address"
+							onChange={(e) => {
+								setEmail(e.target.value);
+							}}
+							value={email}
 							className="bg-transparent w-full h-9 p-5 rounded border border-amber-400
 						"
 						/>
@@ -68,9 +76,13 @@ export default function SignUp() {
 					<label className="flex flex-col gap-2 font-medium">
 						PhoneNumber
 						<input
-							type="text"
+							type="tel"
 							placeholder="Enter email address"
-							className="bg-transparent w-full h-9 p-5 rounded border border-amber-400
+							onChange={(e) => {
+								setPhoneNumber(e.target.value);
+							}}
+							value={phoneNumber}
+							className="bg-transparent w-full h-9 p-5 rounded border border-amber-400 
 						"
 						/>
 					</label>
@@ -85,6 +97,10 @@ export default function SignUp() {
 							<input
 								type={passwordType}
 								placeholder="Enter Password"
+								onChange={(e) => {
+									setPassword(e.target.value);
+								}}
+								value={password}
 								className="bg-transparent h-9 p-5 flex-1 mr-2 outline-none	"
 							/>
 							<button
@@ -121,7 +137,7 @@ export default function SignUp() {
 					<div>
 						<MainButton text="Sign Up" />
 					</div>
-				</div>
+				</form>
 			</section>
 		</div>
 	);
