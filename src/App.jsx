@@ -9,6 +9,7 @@ import Home from "./pages/Home.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 import About from "./pages/About.jsx";
 import Contact from "./pages/Contact.jsx";
+import Auth from "./pages/Auth.jsx";
 import "./App.css"; // Make sure to import the CSS file
 
 // DropDown layout import
@@ -25,6 +26,12 @@ const NavRouter = createBrowserRouter(
 				index
 				element={<Home />}
 			/>
+
+			<Route
+				path="auth"
+				element={<Auth />}
+			/>
+
 			<Route
 				path="dashboard"
 				element={<Dashboard />}

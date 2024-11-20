@@ -25,11 +25,13 @@ export default function NavBar() {
 						className="w-12 rounded-full self-start main-shadow"
 					/>
 					<div className="flex gap-6 md:gap-2">
-						<img
-							src={profileImg}
-							alt="profile"
-							className="w-9"
-						/>
+						<NavLink to="auth">
+							<img
+								src={profileImg}
+								alt="profile"
+								className="w-9"
+							/>
+						</NavLink>
 
 						<button onClick={ToggleNav}>
 							<img

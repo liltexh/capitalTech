@@ -1,8 +1,17 @@
+import { useState } from "react";
 import signUpimg from "../assets/images/bitcoin2.jpg";
 import MainButton from "./MainButton.jsx";
 import "../index.css";
 
-export default function Dashboard() {
+export default function SignUp() {
+	const [loading, setLoading] = useState(false);
+	const [passwordType, setPasswordType] = useState("password");
+	const [fullName, setFullName] = useState("");
+	// const [lastName, setLastName] = useState("");
+	const [email, setEmail] = useState("");
+	const [phoneNumber, setPhoneNumber] = useState("");
+	const [password, setPassword] = useState("");
+
 	return (
 		<div className="w-full h-screen flex justify-center items-center mt-32 mb-56	md:mb-0 md:mt-0 lg:mt-0 lg:mb-0">
 			<section
@@ -12,7 +21,7 @@ export default function Dashboard() {
 			>
 				<div
 					style={{
-						backgroundImage: `url('${signUpimg}')`
+						backgroundImage: `url('${signUpimg}')`,
 					}}
 					className="back_background "
 				>
@@ -21,14 +30,12 @@ export default function Dashboard() {
 					justify-center gap-4 p-10 pl-5 pr-5"
 					>
 						<h2 className="text-2xl font-semibold">
-							Welcome To{" "}
-							<span className="text-amber-400">Capital Tech</span>
+							Welcome To <span className="text-amber-400">Capital Tech</span>
 						</h2>
 						<p>
-							Lorem ipsum dolor sit amet, consectetur adipisicing
-							elit. Blanditiis distinctio delectus repellendus
-							totam obcaecati soluta dignissimos, reprehenderit
-							nostrum quia hic.
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+							Blanditiis distinctio delectus repellendus totam obcaecati soluta
+							dignissimos, reprehenderit nostrum quia hic.
 						</p>
 					</div>
 				</div>
@@ -36,9 +43,7 @@ export default function Dashboard() {
 					className="flex flex-col justify-center p-8 pr-5 pl-5
 				gap-4 "
 				>
-					<h3 className="text-xl font-semibold mb-2">
-						Create An Account
-					</h3>
+					<h3 className="text-xl font-semibold mb-2">Create An Account</h3>
 					<label className="flex flex-col gap-2 font-medium">
 						Full Name
 						<input
@@ -48,6 +53,7 @@ export default function Dashboard() {
 						"
 						/>
 					</label>
+
 					<label className="flex flex-col gap-2 font-medium">
 						Email Address
 						<input
@@ -57,6 +63,17 @@ export default function Dashboard() {
 						"
 						/>
 					</label>
+
+					<label className="flex flex-col gap-2 font-medium">
+						PhoneNumber
+						<input
+							type="text"
+							placeholder="Enter email address"
+							className="bg-transparent w-full h-9 p-5 rounded border border-amber-400
+						"
+						/>
+					</label>
+
 					<label className="flex flex-col gap-3 font-medium">
 						Password
 						<input
