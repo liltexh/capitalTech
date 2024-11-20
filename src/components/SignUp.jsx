@@ -6,7 +6,7 @@ import { eye, eyeCrossed } from "../Tools/icons.js";
 
 export default function SignUp() {
 	const [loading, setLoading] = useState(false);
-	const [passwordType, setPasswordType] = useState("text");
+	const [passwordType, setPasswordType] = useState("password");
 	const [fullName, setFullName] = useState("");
 	// const [lastName, setLastName] = useState("");
 	const [email, setEmail] = useState("");
