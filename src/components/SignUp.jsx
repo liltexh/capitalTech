@@ -2,10 +2,11 @@ import { useState } from "react";
 import signUpimg from "../assets/images/bitcoin2.jpg";
 import MainButton from "./MainButton.jsx";
 import "../index.css";
+import { eye, eyeCrossed } from "../Tools/icons.js";
 
 export default function SignUp() {
 	const [loading, setLoading] = useState(false);
-	const [passwordType, setPasswordType] = useState("password");
+	const [passwordType, setPasswordType] = useState("text");
 	const [fullName, setFullName] = useState("");
 	// const [lastName, setLastName] = useState("");
 	const [email, setEmail] = useState("");
@@ -76,12 +77,38 @@ export default function SignUp() {
 
 					<label className="flex flex-col gap-3 font-medium">
 						Password
-						<input
-							type="text"
-							placeholder="Enter Password"
-							className="bg-transparent w-full h-9 p-5 rounded border border-amber-400
+						<span
+							className="flex justify-between items-center bg-transparent w-full h-9  rounded border border-amber-400 pt-5 pb-5 pr-3  focus-within:border-white focus-within:ring focus:ring-white
 						"
-						/>
+							contentEditable="true"
+						>
+							<input
+								type={passwordType}
+								placeholder="Enter Password"
+								className="bg-transparent h-9 p-5 flex-1 mr-2 outline-none	"
+							/>
+							<button
+								onClick={() => {
+									passwordType == "password"
+										? setPasswordType("text")
+										: setPasswordType("password");
+								}}
+							>
+								{passwordType == "password" ? (
+									<img
+										src={eye}
+										alt="password visible"
+										width="26px"
+									/>
+								) : (
+									<img
+										src={eyeCrossed}
+										alt="password invisible"
+										width="26px"
+									/>
+								)}
+							</button>
+						</span>
 					</label>
 					<label className="flex gap-2 font-medium">
 						<input type="checkbox" />
