@@ -17,8 +17,64 @@ export default function SignUp({ state }) {
 		event.preventDefault();
 		const fullName = fullNameRef;
 		const phoneNumber = phoneNumberRef;
-		const email = email;
+		const email = emailRef;
 		const password = passwordRef;
+
+		const UserInputs = checkUserInputs();
+	}
+
+	function checkUserInputs() {
+		let checker = true;
+		console.log("first");
+		// fullNameRef.current.classList.remove("error-input");
+		// emailRef.current.classList.remove("error-input");
+		// phoneNumberRef.current.classList.remove("error-input");
+		// passwordRef.current.parentElement.classList.remove("error-input");
+
+		if (!fullNameRef.current.value) {
+			addInputError(fullNameRef.current);
+			console.log("seccond");
+			checker = false;
+		} else {
+			RemoveInputError(fullNameRef.current);
+		}
+		const email = emailRef.current.value;
+		if (!verifyEmailInput(email)) {
+			addInputError(emailRef.current);
+			checker = false;
+		} else {
+			RemoveInputError(emailRef.current);
+		}
+
+		if (!phoneNumberRef.current.value) {
+			addInputError(phoneNumberRef.current);
+			checker = false;
+		} else {
+			RemoveInputError(phoneNumberRef.current);
+		}
+
+		if (!passwordRef.current.value) {
+			addInputError(passwordRef.current.parentElement);
+
+			checker = false;
+		} else {
+			RemoveInputError(passwordRef.current.parentElement);
+		}
+	}
+
+	function verifyEmailInput(email) {
+		const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+		return regex.test(email);
+	}
+
+	function RemoveInputError(input) {
+		input.classList.remove("error-input");
+	}
+
+	function addInputError(input) {
+		input.classList.remove("error-input");
+		void input.offsetWidth;
+		input.classList.add("error-input");
 	}
 
 	return (
@@ -83,9 +139,11 @@ export default function SignUp({ state }) {
 						<label className="flex flex-col gap-2 font-medium">
 							PhoneNumber
 							<input
-								type="tel"
-								placeholder="Enter email address"
+								type="text"
+								placeholder="Enter Phone Number"
 								ref={phoneNumberRef}
+								maxLength="12"
+								pattern="[\d]{3}-[\d]{4}-[\d]{4}"
 								className="bg-transparent w-full h-9 p-5 rounded border border-amber-400 
 						"
 							/>
