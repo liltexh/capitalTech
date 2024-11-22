@@ -1,12 +1,15 @@
 import { useRef, useState } from "react";
 import signUpimg from "../assets/images/bitcoin2.jpg";
 import MainButton from "./MainButton.jsx";
+import "react-phone-number-input/style.css";
+import PhoneInput from "react-phone-number-input";
 import "../index.css";
 import { eye, eyeCrossed } from "../Tools/icons.js";
 
 export default function SignUp({ state }) {
 	const { setHasAccount } = state;
 	const [loading, setLoading] = useState(false);
+	const [phoneNumberInput, setPhoneNumberInput] = useState("");
 	const [passwordType, setPasswordType] = useState("password");
 	const fullNameRef = useRef(null);
 	const phoneNumberRef = useRef(null);
@@ -46,8 +49,13 @@ export default function SignUp({ state }) {
 			RemoveInputError(emailRef.current);
 		}
 
-		if (!phoneNumberRef.current.value) {
-			addInputError(phoneNumberRef.current);
+		// console.log(phoneNumberRef.current.parentElement);
+		console.log(phoneNumberRef.current.value);
+		if (
+			!phoneNumberRef.current.value ||
+			phoneNumberRef.current.value.toString().length < 10
+		) {
+			addInputError(phoneNumberRef.current.parentElement);
 			checker = false;
 		} else {
 			RemoveInputError(phoneNumberRef.current);
@@ -138,7 +146,17 @@ export default function SignUp({ state }) {
 
 						<label className="flex flex-col gap-2 font-medium">
 							PhoneNumber
-							<input
+							<PhoneInput
+								international
+								defaultCountry="US"
+								value={phoneNumberInput}
+								onChange={setPhoneNumberInput}
+								placeholder="Enter phone number"
+								ref={phoneNumberRef}
+								className="flex justify-between items-center bg-transparent w-full h-9 rounded border border-amber-400 pt-5 pb-5 pr-3  focus-within:border-white   focus-within:ring focus:ring-white"
+							/>
+							{/*  flex justify-between items-center gap-2 bg-transparent w-full h-9 rounded border border-amber-400 pt-5 pb-5 pr-3  focus-within:border-white   focus-within:ring focus:ring-white */}
+							{/* <input
 								type="text"
 								placeholder="Enter Phone Number"
 								ref={phoneNumberRef}
@@ -146,7 +164,7 @@ export default function SignUp({ state }) {
 								pattern="[\d]{3}-[\d]{4}-[\d]{4}"
 								className="bg-transparent w-full h-9 p-5 rounded border border-amber-400 
 						"
-							/>
+							/> */}
 						</label>
 
 						<label className="flex flex-col gap-3 font-medium">
