@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import signUpimg from "../assets/images/bitcoin2.jpg";
 import MainButton from "./MainButton.jsx";
 import "../index.css";
@@ -8,11 +8,18 @@ export default function SignUp({ state }) {
 	const { setHasAccount } = state;
 	const [loading, setLoading] = useState(false);
 	const [passwordType, setPasswordType] = useState("password");
-	const [fullName, setFullName] = useState("");
-	// const [lastName, setLastName] = useState("");
-	const [email, setEmail] = useState("");
-	const [phoneNumber, setPhoneNumber] = useState("");
-	const [password, setPassword] = useState("");
+	const fullNameRef = useRef(null);
+	const phoneNumberRef = useRef(null);
+	const emailRef = useRef("yes");
+	const passwordRef = useRef(null);
+
+	function createUser(event) {
+		event.preventDefault();
+		const fullName = fullNameRef;
+		const phoneNumber = phoneNumberRef;
+		const email = email;
+		const password = passwordRef;
+	}
 
 	return (
 		<div className="w-full h-screen flex justify-center items-center mt-32 mb-56">
@@ -46,16 +53,17 @@ export default function SignUp({ state }) {
 				gap-4 "
 				>
 					<h3 className="text-xl font-semibold mb-2">Create An Account</h3>
-					<form className="flex flex-col gap-5 justify-center">
+
+					<form
+						onSubmit={createUser}
+						className="flex flex-col gap-5 justify-center"
+					>
 						<label className="flex flex-col gap-2 font-medium">
 							Full Name
 							<input
 								type="text"
 								placeholder="Enter full name"
-								onChange={(e) => {
-									setFullName(e.target.value);
-								}}
-								value={fullName}
+								ref={fullNameRef}
 								className="bg-transparent w-full h-9 p-5 rounded border border-amber-400
 						"
 							/>
@@ -66,10 +74,7 @@ export default function SignUp({ state }) {
 							<input
 								type="text"
 								placeholder="Enter email address"
-								onChange={(e) => {
-									setEmail(e.target.value);
-								}}
-								value={email}
+								ref={emailRef}
 								className="bg-transparent w-full h-9 p-5 rounded border border-amber-400
 						"
 							/>
@@ -80,10 +85,7 @@ export default function SignUp({ state }) {
 							<input
 								type="tel"
 								placeholder="Enter email address"
-								onChange={(e) => {
-									setPhoneNumber(e.target.value);
-								}}
-								value={phoneNumber}
+								ref={phoneNumberRef}
 								className="bg-transparent w-full h-9 p-5 rounded border border-amber-400 
 						"
 							/>
@@ -94,18 +96,15 @@ export default function SignUp({ state }) {
 							<span
 								className="flex justify-between items-center bg-transparent w-full h-9  rounded border border-amber-400 pt-5 pb-5 pr-3  focus-within:border-white focus-within:ring focus:ring-white
 						"
-								contentEditable="true"
 							>
 								<input
 									type={passwordType}
 									placeholder="Enter Password"
-									onChange={(e) => {
-										setPassword(e.target.value);
-									}}
-									value={password}
+									ref={passwordRef}
 									className="bg-transparent h-9 p-5 flex-1 mr-2 outline-none	"
 								/>
 								<button
+									type="button"
 									onClick={() => {
 										passwordType == "password"
 											? setPasswordType("text")
