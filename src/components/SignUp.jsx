@@ -10,11 +10,12 @@ import {
 	addInputError,
 } from "../Tools/userValidation.js";
 import PasswordInput from "./PasswordInput.jsx";
+import InputErrorInfo from "./InputErrorInfo.jsx";
 export default function SignUp({ state }) {
 	const { setHasAccount } = state;
 	const [loading, setLoading] = useState(false);
 	const [phoneNumberInput, setPhoneNumberInput] = useState("");
-	const [passwordType, setPasswordType] = useState("password");
+	const [invalidForm, handleInvalidForm] = useState(true);
 	const fullNameRef = useRef(null);
 	const phoneNumberRef = useRef(null);
 	const emailRef = useRef("yes");
@@ -69,6 +70,11 @@ export default function SignUp({ state }) {
 
 	return (
 		<div className="w-full h-screen flex justify-center items-center mt-32 mb-56">
+			{invalidForm && (
+				<span className="z-50 absolute top-[40%] left-16">
+					<InputErrorInfo />
+				</span>
+			)}
 			<section
 				style={{ backgroundColor: "rgba(0,0,0,0.7)" }}
 				className="glowing_shadow w-11/12 md:w-2/3 lg:w-2/3 flex flex-col

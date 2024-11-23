@@ -43,7 +43,7 @@ export default function SignIn({ state }) {
 		}
 	}
 	return (
-		<div className="w-full h-screen flex justify-center items-center mt-32 mb-56	md:mb-0 md:mt-0 lg:mt-0 lg:mb-0">
+		<div className="w-full h-screen flex justify-center items-center mt-32 mb-56">
 			<section
 				style={{ backgroundColor: "rgba(0,0,0,0.7)" }}
 				className="glowing_shadow w-11/12 md:w-2/3 lg:w-2/3 flex flex-col
