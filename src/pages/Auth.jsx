@@ -3,7 +3,7 @@ import SignIn from "../components/SignIn";
 import SignUp from "../components/SignUp";
 import { eye, eyeCrossed } from "../Tools/icons";
 function Auth() {
-	const [hasAccount, setHasAccount] = useState(false);
+	const [hasAccount, setHasAccount] = useState(true);
 	const [loading, setLoading] = useState(false);
 	const [passwordType, setPasswordType] = useState("password");
 	const [firstName, setFirstName] = useState("");

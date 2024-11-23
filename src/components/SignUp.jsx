@@ -5,7 +5,11 @@ import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
 import "../index.css";
 import { eye, eyeCrossed } from "../Tools/icons.js";
-
+import {
+	verifyEmailInput,
+	RemoveInputError,
+	addInputError,
+} from "../Tools/userValidation.js";
 export default function SignUp({ state }) {
 	const { setHasAccount } = state;
 	const [loading, setLoading] = useState(false);
@@ -68,21 +72,6 @@ export default function SignUp({ state }) {
 		} else {
 			RemoveInputError(passwordRef.current.parentElement);
 		}
-	}
-
-	function verifyEmailInput(email) {
-		const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-		return regex.test(email);
-	}
-
-	function RemoveInputError(input) {
-		input.classList.remove("error-input");
-	}
-
-	function addInputError(input) {
-		input.classList.remove("error-input");
-		void input.offsetWidth;
-		input.classList.add("error-input");
 	}
 
 	return (
