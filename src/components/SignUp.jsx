@@ -15,7 +15,7 @@ export default function SignUp({ state }) {
 	const { setHasAccount } = state;
 	const [loading, setLoading] = useState(false);
 	const [phoneNumberInput, setPhoneNumberInput] = useState("");
-	const [invalidForm, handleInvalidForm] = useState(true);
+	const [invalidForm, handleInvalidForm] = useState(false);
 	const fullNameRef = useRef(null);
 	const phoneNumberRef = useRef(null);
 	const emailRef = useRef("yes");
@@ -37,13 +37,14 @@ export default function SignUp({ state }) {
 
 		if (!fullNameRef.current.value) {
 			addInputError(fullNameRef.current);
-			console.log("seccond");
+
 			checker = false;
 		} else {
 			RemoveInputError(fullNameRef.current);
 		}
 		if (!verifyEmailInput(email)) {
 			addInputError(emailRef.current);
+
 			checker = false;
 		} else {
 			RemoveInputError(emailRef.current);
@@ -54,6 +55,7 @@ export default function SignUp({ state }) {
 			phoneNumberRef.current.value.toString().length < 10
 		) {
 			addInputError(phoneNumberRef.current.parentElement);
+
 			checker = false;
 		} else {
 			RemoveInputError(phoneNumberRef.current);
@@ -66,19 +68,44 @@ export default function SignUp({ state }) {
 		} else {
 			RemoveInputError(passwordRef.current.parentElement);
 		}
+
+		if (
+			!fullNameRef.current.value ||
+			!verifyEmailInput(email) ||
+			!phoneNumberRef.current.value ||
+			phoneNumberRef.current.value.toString().length < 10 ||
+			!passwordRef.current.value
+		) {
+			handleInvalidForm(true);
+		} else {
+			handleInvalidForm(false);
+		}
 	}
 
 	return (
-		<div className="w-full h-screen flex justify-center items-center mt-32 mb-56">
+		<div className="w-full h-screen flex justify-center items-center mt-32 mb-56 ">
 			{invalidForm && (
-				<span className="z-50 absolute top-[40%] bg-black w-3/4 h-auto">
+				<span
+					style={{ backgroundColor: "rgba(0,0,0,0.1)" }}
+					className="z-50 absolute top-[40%]  bg-black w-auto h-auto  border border-red-700 p-2 rounded backdrop-blur-sm"
+				>
 					<TypeAnimation
 						sequence={[
-							"Invalid Credentials  or",
+							"Invalid Input or .",
+							100,
+							"Invalid Input or ..",
+							100,
+							"Invalid Input or ...",
 							1000,
-							"Invalid Credentials or Incomplete Credentials... ",
+							"Invalid Input or ..",
+							100,
+							"Invalid Input or .",
+							300,
+							"Invalid Input or ",
+							1000,
+							"Invalid Input or Incomplete Credentials... ",
 						]}
-						speed={80}
+						speed={90}
 						className="text-red-700 font-semibold text-xl"
 					/>
 				</span>

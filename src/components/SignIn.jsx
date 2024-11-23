@@ -6,12 +6,16 @@ import {
 	RemoveInputError,
 	addInputError,
 } from "../Tools/userValidation.js";
+import { TypeAnimation } from "react-type-animation";
+
 import "../index.css";
 import PasswordInput from "./PasswordInput.jsx";
 
 export default function SignIn({ state }) {
-	const [passwordType, setPasswordType] = useState("password");
 	const { setHasAccount } = state;
+	const [passwordType, setPasswordType] = useState("password");
+	const [invalidForm, handleInvalidForm] = useState(false);
+
 	const [loading, setLoading] = useState(false);
 	const emailRef = useRef("yes");
 	const passwordRef = useRef(null);
@@ -29,21 +33,51 @@ export default function SignIn({ state }) {
 		console.log(passwordRef.current.value);
 		if (!verifyEmailInput(email)) {
 			addInputError(emailRef.current);
+			handleInvalidForm(true);
 			checker = false;
 		} else {
 			RemoveInputError(emailRef.current);
+			handleInvalidForm(false);
 		}
 
 		if (!passwordRef.current.value) {
 			addInputError(passwordRef.current.parentElement);
+			handleInvalidForm(true);
 
 			checker = false;
 		} else {
 			RemoveInputError(passwordRef.current.parentElement);
+			handleInvalidForm(false);
 		}
 	}
 	return (
 		<div className="w-full h-screen flex justify-center items-center mt-32 mb-56">
+			{invalidForm && (
+				<span
+					style={{ backgroundColor: "rgba(0,0,0,0.1)" }}
+					className="z-50 absolute top-[40%]  bg-black w-auto h-auto  border border-red-700 p-2 rounded backdrop-blur-sm"
+				>
+					<TypeAnimation
+						sequence={[
+							"Invalid Input or .",
+							100,
+							"Invalid Input or ..",
+							100,
+							"Invalid Input or ...",
+							1000,
+							"Invalid Input or ..",
+							100,
+							"Invalid Input or .",
+							300,
+							"Invalid Input or ",
+							1000,
+							"Invalid Input or Incomplete Credentials... ",
+						]}
+						speed={90}
+						className="text-red-700 font-semibold text-xl"
+					/>
+				</span>
+			)}
 			<section
 				style={{ backgroundColor: "rgba(0,0,0,0.7)" }}
 				className="glowing_shadow w-11/12 md:w-2/3 lg:w-2/3 flex flex-col
