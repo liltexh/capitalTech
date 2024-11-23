@@ -4,12 +4,12 @@ import MainButton from "./MainButton.jsx";
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
 import "../index.css";
-import { eye, eyeCrossed } from "../Tools/icons.js";
 import {
 	verifyEmailInput,
 	RemoveInputError,
 	addInputError,
 } from "../Tools/userValidation.js";
+import PasswordInput from "./PasswordInput.jsx";
 export default function SignUp({ state }) {
 	const { setHasAccount } = state;
 	const [loading, setLoading] = useState(false);
@@ -32,11 +32,7 @@ export default function SignUp({ state }) {
 
 	function checkUserInputs() {
 		let checker = true;
-		console.log("first");
-		// fullNameRef.current.classList.remove("error-input");
-		// emailRef.current.classList.remove("error-input");
-		// phoneNumberRef.current.classList.remove("error-input");
-		// passwordRef.current.parentElement.classList.remove("error-input");
+		const email = emailRef.current.value;
 
 		if (!fullNameRef.current.value) {
 			addInputError(fullNameRef.current);
@@ -45,7 +41,6 @@ export default function SignUp({ state }) {
 		} else {
 			RemoveInputError(fullNameRef.current);
 		}
-		const email = emailRef.current.value;
 		if (!verifyEmailInput(email)) {
 			addInputError(emailRef.current);
 			checker = false;
@@ -53,8 +48,6 @@ export default function SignUp({ state }) {
 			RemoveInputError(emailRef.current);
 		}
 
-		// console.log(phoneNumberRef.current.parentElement);
-		console.log(phoneNumberRef.current.value);
 		if (
 			!phoneNumberRef.current.value ||
 			phoneNumberRef.current.value.toString().length < 10
@@ -158,39 +151,7 @@ export default function SignUp({ state }) {
 
 						<label className="flex flex-col gap-3 font-medium">
 							Password
-							<span
-								className="flex justify-between items-center bg-transparent w-full h-9  rounded border border-amber-400 pt-5 pb-5 pr-3  focus-within:border-white focus-within:ring focus:ring-white
-						"
-							>
-								<input
-									type={passwordType}
-									placeholder="Enter Password"
-									ref={passwordRef}
-									className="bg-transparent h-9 p-5 flex-1 mr-2 outline-none	"
-								/>
-								<button
-									type="button"
-									onClick={() => {
-										passwordType == "password"
-											? setPasswordType("text")
-											: setPasswordType("password");
-									}}
-								>
-									{passwordType == "password" ? (
-										<img
-											src={eye}
-											alt="password visible"
-											width="26px"
-										/>
-									) : (
-										<img
-											src={eyeCrossed}
-											alt="password invisible"
-											width="26px"
-										/>
-									)}
-								</button>
-							</span>
+							<PasswordInput state={{ passwordRef }} />
 						</label>
 						<label className="flex gap-2 font-medium">
 							<input type="checkbox" />
