@@ -1,6 +1,6 @@
 .error-input {
 	animation: shake 0.5s;
-	border-color: red;
+	border-color: rgba(185, 28, 28);
 }
 
 .PhoneInputInput {

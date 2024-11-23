@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import { TypeAnimation } from "react-type-animation";
 import signUpimg from "../assets/images/bitcoin2.jpg";
 import MainButton from "./MainButton.jsx";
 import "react-phone-number-input/style.css";
@@ -10,7 +11,6 @@ import {
 	addInputError,
 } from "../Tools/userValidation.js";
 import PasswordInput from "./PasswordInput.jsx";
-import InputErrorInfo from "./InputErrorInfo.jsx";
 export default function SignUp({ state }) {
 	const { setHasAccount } = state;
 	const [loading, setLoading] = useState(false);
@@ -71,8 +71,16 @@ export default function SignUp({ state }) {
 	return (
 		<div className="w-full h-screen flex justify-center items-center mt-32 mb-56">
 			{invalidForm && (
-				<span className="z-50 absolute top-[40%] left-16">
-					<InputErrorInfo />
+				<span className="z-50 absolute top-[40%] bg-black w-3/4 h-auto">
+					<TypeAnimation
+						sequence={[
+							"Invalid Credentials  or",
+							1000,
+							"Invalid Credentials or Incomplete Credentials... ",
+						]}
+						speed={80}
+						className="text-red-700 font-semibold text-xl"
+					/>
 				</span>
 			)}
 			<section
