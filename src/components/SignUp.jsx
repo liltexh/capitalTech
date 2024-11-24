@@ -9,6 +9,9 @@ import {
 	verifyEmailInput,
 	RemoveInputError,
 	addInputError,
+	verifyFullnameInput,
+	verifyPhoneNumber,
+	verifyPassword,
 } from "../Tools/userValidation.js";
 import PasswordInput from "./PasswordInput.jsx";
 import { createUserInFireStore } from "../Tools/firestoreFunctions.js";
@@ -61,7 +64,7 @@ export default function SignUp({ state }) {
 		let checker = true;
 		const email = emailRef.current.value;
 		const phoneNumber = phoneNumberRef.current.value.toString();
-		if (!fullNameRef.current.value) {
+		if (!verifyFullnameInput(fullNameRef.current.value)) {
 			addInputError(fullNameRef.current);
 		} else {
 			RemoveInputError(fullNameRef.current);
@@ -72,24 +75,23 @@ export default function SignUp({ state }) {
 			RemoveInputError(emailRef.current);
 		}
 
-		if (phoneNumberRef.length > 15 || phoneNumber.length < 5) {
+		if (!verifyPhoneNumber(phoneNumber)) {
 			addInputError(phoneNumberRef.current.parentElement);
 		} else {
 			RemoveInputError(phoneNumberRef.current);
 		}
 
-		if (!passwordRef.current.value) {
+		if (!verifyPassword(passwordRef.current.value)) {
 			addInputError(passwordRef.current.parentElement);
 		} else {
 			RemoveInputError(passwordRef.current.parentElement);
 		}
 
 		if (
-			!fullNameRef.current.value ||
+			!verifyFullnameInput(fullNameRef.current.value) ||
 			!verifyEmailInput(email) ||
-			phoneNumberRef.length > 15 ||
-			phoneNumber.length < 5 ||
-			!passwordRef.current.value
+			!verifyPhoneNumber(phoneNumber) ||
+			!verifyPassword(passwordRef.current.value)
 		) {
 			handleInvalidForm(true);
 			checker = false;
@@ -104,7 +106,7 @@ export default function SignUp({ state }) {
 			{invalidForm && (
 				<span
 					style={{ backgroundColor: "rgba(0,0,0,0.1)" }}
-					className="z-50 absolute top-[40%]  bg-transparent w-auto h-auto  border border-red-700 p-2 rounded backdrop-blur-sm"
+					className="z-50 fixed top-[30%]  bg-transparent w-auto h-auto  border border-red-700 p-2 rounded backdrop-blur-sm"
 				>
 					<TypeAnimation
 						sequence={[

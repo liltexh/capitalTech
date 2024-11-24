@@ -55,7 +55,7 @@ export default function SignIn({ state }) {
 			{invalidForm && (
 				<span
 					style={{ backgroundColor: "rgba(0,0,0,0.1)" }}
-					className="z-50 absolute top-[40%]  bg-black w-auto h-auto  border border-red-700 p-2 rounded backdrop-blur-sm"
+					className="z-50 fixed top-[40%]  bg-black w-auto h-auto  border border-red-700 p-2 rounded backdrop-blur-sm"
 				>
 					<TypeAnimation
 						sequence={[

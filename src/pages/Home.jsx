@@ -49,7 +49,10 @@ export default function Home() {
 					</p>
 					<br />
 					<div>
-						<MainButton text="Sign Up" />
+						<NavLink to="auth">
+							{" "}
+							<MainButton text="Sign Up" />
+						</NavLink>
 					</div>
 				</div>
 			</section>
