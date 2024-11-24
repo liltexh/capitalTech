@@ -11,6 +11,9 @@ import {
 	addInputError,
 } from "../Tools/userValidation.js";
 import PasswordInput from "./PasswordInput.jsx";
+import { createUserInFireStore } from "../Tools/firestoreFunctions.js";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { Auth } from "../config/Firebase.js";
 export default function SignUp({ state }) {
 	const { setHasAccount } = state;
 	const [loading, setLoading] = useState(false);
@@ -21,12 +24,12 @@ export default function SignUp({ state }) {
 	const emailRef = useRef("yes");
 	const passwordRef = useRef(null);
 
-	function createUser(event) {
+	async function createUser(event) {
 		event.preventDefault();
-		const fullName = fullNameRef;
-		const phoneNumber = phoneNumberRef;
-		const email = emailRef;
-		const password = passwordRef;
+		const fullName = fullNameRef.current;
+		const phoneNumber = phoneNumberRef.current;
+		const email = emailRef.current;
+		const password = passwordRef.current;
 
 		const UserInputs = checkUserInputs();
 		if (!UserInputs) {
@@ -35,12 +38,29 @@ export default function SignUp({ state }) {
 		}
 
 		setLoading(true);
+		try {
+			const userCredentials = await createUserWithEmailAndPassword(
+				Auth,
+				email.value.toLocaleLowerCase(),
+				password.value
+			);
+			if (userCredentials) {
+				await createUserInFireStore(
+					userCredentials.user.uid,
+					fullName.value,
+					email.value,
+					phoneNumber.value,
+					password.value
+				);
+				alert("user has been created sussefully");
+			}
+		} catch (error) {}
 	}
 
 	function checkUserInputs() {
 		let checker = true;
 		const email = emailRef.current.value;
-
+		const phoneNumber = phoneNumberRef.current.value.toString();
 		if (!fullNameRef.current.value) {
 			addInputError(fullNameRef.current);
 		} else {
@@ -52,10 +72,7 @@ export default function SignUp({ state }) {
 			RemoveInputError(emailRef.current);
 		}
 
-		if (
-			!phoneNumberRef.current.value ||
-			phoneNumberRef.current.value.toString().length < 10
-		) {
+		if (phoneNumberRef.length > 15 || phoneNumber.length < 5) {
 			addInputError(phoneNumberRef.current.parentElement);
 		} else {
 			RemoveInputError(phoneNumberRef.current);
@@ -70,8 +87,8 @@ export default function SignUp({ state }) {
 		if (
 			!fullNameRef.current.value ||
 			!verifyEmailInput(email) ||
-			!phoneNumberRef.current.value ||
-			phoneNumberRef.current.value.toString().length < 10 ||
+			phoneNumberRef.length > 15 ||
+			phoneNumber.length < 5 ||
 			!passwordRef.current.value
 		) {
 			handleInvalidForm(true);
