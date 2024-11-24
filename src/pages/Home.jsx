@@ -6,7 +6,7 @@ import Bgimg3 from "../assets/images/Picsart_24-10-18_01-42-56-443.jpg";
 import "../index.css";
 import InvestmentPlan from "../components/InvestmentPlan.jsx";
 import MainButton from "../components/MainButton.jsx";
-import ReasonsComponent from "../Idata/InvestReasons.jsx";
+import ReasonsComponent from "../data/InvestReasons.jsx";
 import ProfitCalculator from "../components/ProfitCalculator.jsx";
 import ReviewSlide from "../components/CustomerReview.jsx";
 import FAQ from "../components/FAQ.jsx";

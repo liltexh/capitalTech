@@ -29,6 +29,12 @@ export default function SignUp({ state }) {
 		const password = passwordRef;
 
 		const UserInputs = checkUserInputs();
+		if (!UserInputs) {
+			console.log("invalid form");
+			return;
+		}
+
+		setLoading(true);
 	}
 
 	function checkUserInputs() {
@@ -37,15 +43,11 @@ export default function SignUp({ state }) {
 
 		if (!fullNameRef.current.value) {
 			addInputError(fullNameRef.current);
-
-			checker = false;
 		} else {
 			RemoveInputError(fullNameRef.current);
 		}
 		if (!verifyEmailInput(email)) {
 			addInputError(emailRef.current);
-
-			checker = false;
 		} else {
 			RemoveInputError(emailRef.current);
 		}
@@ -55,16 +57,12 @@ export default function SignUp({ state }) {
 			phoneNumberRef.current.value.toString().length < 10
 		) {
 			addInputError(phoneNumberRef.current.parentElement);
-
-			checker = false;
 		} else {
 			RemoveInputError(phoneNumberRef.current);
 		}
 
 		if (!passwordRef.current.value) {
 			addInputError(passwordRef.current.parentElement);
-
-			checker = false;
 		} else {
 			RemoveInputError(passwordRef.current.parentElement);
 		}
@@ -77,9 +75,11 @@ export default function SignUp({ state }) {
 			!passwordRef.current.value
 		) {
 			handleInvalidForm(true);
+			checker = false;
 		} else {
 			handleInvalidForm(false);
 		}
+		return checker;
 	}
 
 	return (
@@ -87,7 +87,7 @@ export default function SignUp({ state }) {
 			{invalidForm && (
 				<span
 					style={{ backgroundColor: "rgba(0,0,0,0.1)" }}
-					className="z-50 absolute top-[40%]  bg-black w-auto h-auto  border border-red-700 p-2 rounded backdrop-blur-sm"
+					className="z-50 absolute top-[40%]  bg-transparent w-auto h-auto  border border-red-700 p-2 rounded backdrop-blur-sm"
 				>
 					<TypeAnimation
 						sequence={[
