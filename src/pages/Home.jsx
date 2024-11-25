@@ -60,9 +60,12 @@ export default function Home() {
 				className="flex flex-col justify-center items-center p-16 gap-4
 			border-b-2 border-b-amber-400"
 			>
-				{StockList.map((list) => {
+				{StockList.map((list, idx) => {
 					return (
-						<div className="flex flex-col items-center justify-center mb-4">
+						<div
+							key={idx}
+							className="flex flex-col items-center justify-center mb-4"
+						>
 							<p className="font-medium">{list[0]}</p>
 							<p className="text-amber-400 text-3xl font-bold">{list[1]}</p>
 						</div>
@@ -110,7 +113,7 @@ export default function Home() {
 				</div>
 			</section>
 			<section className="flex flex-col justify-center items-center gap-10 mt-32 mb-24">
-				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 m-auto">
 					<InvestmentPlan />
 					<InvestmentPlan />
 					<InvestmentPlan />

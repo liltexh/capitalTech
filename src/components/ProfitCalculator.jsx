@@ -18,14 +18,14 @@ export default function ProfitCalculator() {
 				</div>
 				<div className="flex flex-col gap-2 w-10/12">
 					<label
-						htmlfor="invest_amount"
+						htmlFor="invest_amount"
 						className="font-medium"
 					>
 						Investment Amount
 					</label>
 					<input
 						type="text"
-						placeHolder="0.00 <input amount>"
+						placeholder="0.00 <input amount>"
 						id="invest_amount"
 						className="bg-amber-400 text-white text-start font-medium p-4	rounded
 						h-1/6 outline-none"

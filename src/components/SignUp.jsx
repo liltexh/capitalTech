@@ -17,6 +17,7 @@ import PasswordInput from "./PasswordInput.jsx";
 import { createUserInFireStore } from "../Tools/firestoreFunctions.js";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { Auth } from "../config/Firebase.js";
+import { useEffect } from "react";
 export default function SignUp({ state }) {
 	const { setHasAccount } = state;
 	const [loading, setLoading] = useState(false);
@@ -100,6 +101,10 @@ export default function SignUp({ state }) {
 		}
 		return checker;
 	}
+
+	useEffect(() => {
+		console.log(Auth);
+	}, []);
 
 	return (
 		<div className="w-full h-screen flex justify-center items-center mt-32 mb-56 ">
@@ -197,16 +202,6 @@ export default function SignUp({ state }) {
 								ref={phoneNumberRef}
 								className="flex justify-between items-center bg-transparent w-full h-9 rounded border border-amber-400 pt-5 pb-5 pr-3  focus-within:border-white   focus-within:ring focus:ring-white"
 							/>
-							{/*  flex justify-between items-center gap-2 bg-transparent w-full h-9 rounded border border-amber-400 pt-5 pb-5 pr-3  focus-within:border-white   focus-within:ring focus:ring-white */}
-							{/* <input
-								type="text"
-								placeholder="Enter Phone Number"
-								ref={phoneNumberRef}
-								maxLength="12"
-								pattern="[\d]{3}-[\d]{4}-[\d]{4}"
-								className="bg-transparent w-full h-9 p-5 rounded border border-amber-400 
-						"
-							/> */}
 						</label>
 
 						<label className="flex flex-col gap-3 font-medium">

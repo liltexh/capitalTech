@@ -2,16 +2,25 @@ import logo from "../assets/images/IMG-20241007-WA0033.jpg";
 import profileImg from "../assets/Icons/person-circle-outline.svg";
 import hamburger from "../assets/Icons/hamburger.svg";
 import { useState, useRef } from "react";
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import "../CustomStyles/Nav.css";
 import "../index.css";
+import { Auth } from "../config/Firebase";
 export default function NavBar() {
 	const [isOpen, setIsOpen] = useState(false);
 	const dropdownRef = useRef(null);
 	const ToggleNav = () => {
 		setIsOpen((o) => !isOpen);
 	};
+	const navigate = useNavigate();
+	function displayProfile() {
+		// if (Auth.currentUser) {
+		// 	alert("user already craeted");
+		// 	return;
+		// }
 
+		navigate("auth");
+	}
 	return (
 		<>
 			<nav
@@ -25,13 +34,16 @@ export default function NavBar() {
 						className="w-12 rounded-full self-start main-shadow"
 					/>
 					<div className="flex gap-6 md:gap-2">
-						<NavLink to="auth">
+						<button
+							onClick={displayProfile}
+							type="button"
+						>
 							<img
 								src={profileImg}
 								alt="profile"
 								className="w-9"
 							/>
-						</NavLink>
+						</button>
 
 						<button onClick={ToggleNav}>
 							<img
