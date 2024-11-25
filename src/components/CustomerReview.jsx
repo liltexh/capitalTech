@@ -48,8 +48,8 @@ const ReviewData = [
 ];
 
 function ReviewSlide() {
-	const mobileBreakpoint = 480; // Mobile view max width
-	const tabletBreakpoint = 768; // Tablet view max width
+	const mobileBreakpoint = 540; // Mobile view max width
+	const tabletBreakpoint = 920; // Tablet view max width
 	// Set initial state for the view (mobile, tablet, desktop)
 	const [view, setView] = useState(1);
 

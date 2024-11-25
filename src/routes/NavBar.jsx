@@ -14,10 +14,10 @@ export default function NavBar() {
 	};
 	const navigate = useNavigate();
 	function displayProfile() {
-		// if (Auth.currentUser) {
-		// 	alert("user already craeted");
-		// 	return;
-		// }
+		if (Auth.currentUser) {
+			alert("user already craeted");
+			return;
+		}
 
 		navigate("auth");
 	}

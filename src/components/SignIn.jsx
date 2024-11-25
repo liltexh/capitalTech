@@ -10,6 +10,8 @@ import { TypeAnimation } from "react-type-animation";
 
 import "../index.css";
 import PasswordInput from "./PasswordInput.jsx";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { Auth } from "../config/Firebase.js";
 
 export default function SignIn({ state }) {
 	const { setHasAccount } = state;
@@ -19,12 +21,31 @@ export default function SignIn({ state }) {
 	const [loading, setLoading] = useState(false);
 	const emailRef = useRef("yes");
 	const passwordRef = useRef(null);
-	function logUserIn() {
+	async function logUserIn() {
 		event.preventDefault();
 		const email = emailRef;
 		const password = passwordRef;
 
 		const UserInputs = checkUserInputs();
+		if (!UserInputs) {
+			console.log("invalid form");
+			return;
+		}
+
+		setLoading(true);
+		try {
+			const userCredentials = await signInWithEmailAndPassword(
+				Auth,
+				email,
+				password
+			);
+
+			if (userCredentials) {
+				alert("user has sign in succefully");
+			}
+		} catch (error) {
+			alert(error.message);
+		}
 	}
 
 	function checkUserInputs() {

@@ -12,13 +12,20 @@ import FAQ from "../components/FAQ.jsx";
 import { goldUSD } from "../Tools/getGoldUSD.js";
 import { useState, useEffect } from "react";
 import { NavLink, Outlet } from "react-router-dom";
+import { Auth } from "../config/Firebase.js";
 export default function Home() {
+	const [currentUser, setCurrentUser] = useState(null);
 	const StockList = [
 		["GOLD IN USD ZONE", "2738.62 USD"],
 		["GOLD IN THE EURO ZONE", "6828.62 EUR"],
 		["24-HOUR TRADING VOLUME", "7283.627"],
 		["OUR ACTIVE TRADERS", "5622.62"],
 	];
+	useEffect(() => {
+		if (Auth.currentUser) {
+			setCurrentUser(Auth.currentUser);
+		}
+	}, []);
 
 	return (
 		<>
@@ -48,10 +55,12 @@ export default function Home() {
 					</p>
 					<br />
 					<div>
-						<NavLink to="auth">
-							{" "}
-							<MainButton text="Sign Up" />
-						</NavLink>
+						{!currentUser && (
+							<NavLink to="auth">
+								{" "}
+								<MainButton text="Sign Up" />
+							</NavLink>
+						)}
 					</div>
 				</div>
 			</section>
