@@ -2,7 +2,7 @@ import firstSecImg from "../assets/images/Picsart_24-10-18_01-42-56-443.jpg";
 import HomeIcon from "../assets/Icons/home-outline.svg";
 import { NavLink } from "react-router-dom";
 
-import AboutPrevImg from "../assets/images/barchart1.png";
+import AboutPrevImg from "../assets/images/barchart1.jpg";
 
 import MainButton from "../components/MainButton.jsx";
 

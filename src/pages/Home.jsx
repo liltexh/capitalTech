@@ -1,8 +1,7 @@
-import hero from "../assets/images/bitcoin1.png";
-import AboutPrevImg from "../assets/images/barchart1.png";
-import coinImgBg from "../assets/images/coinCap1.png";
-import BgRepeat from "../assets/images/bgrepeat.png";
-import Bgimg3 from "../assets/images/Picsart_24-10-18_01-42-56-443.jpg";
+import hero from "../assets/images/bitcoin1.jpg";
+import AboutPrevImg from "../assets/images/barchart1.jpg";
+import coinImgBg from "../assets/images/coinCap1.jpg";
+
 import "../index.css";
 import InvestmentPlan from "../components/InvestmentPlan.jsx";
 import MainButton from "../components/MainButton.jsx";

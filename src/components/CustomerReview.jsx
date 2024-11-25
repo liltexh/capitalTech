@@ -2,7 +2,7 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import BgRepeat from "../assets/images/bgrepeat.png";
+import BgRepeat from "../assets/images/bgrepeat.jpg";
 import IstockA from "../assets/images/istockphoto-1386479313-1024x1024.jpg";
 import IstockB from "../assets/images/istockphoto-1388253782-1024x1024.jpg";
 import IstockC from "../assets/images/istockphoto-1437816897-1024x1024.jpg";
