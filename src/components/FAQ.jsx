@@ -28,15 +28,34 @@ export default function FAQ() {
 }
 
 function QuesionComponent(props) {
+	const FaqConatiner = useRef(null);
 	const ActiveQuestionHead = useRef(null);
 	const ActiveQuestionBody = useRef(null);
 
 	const handleActive = () => {
-		ActiveQuestionHead.current.classList.toggle("FAQuestion_question_active");
-		ActiveQuestionBody.current.classList.toggle("FAQuestion_answer_active");
+		if (
+			ActiveQuestionHead.current.classList.contains(
+				"FAQuestion_question_active"
+			)
+		) {
+			ActiveQuestionHead.current.classList.remove("FAQuestion_question_active");
+			ActiveQuestionBody.current.classList.remove("FAQuestion_answer_active");
+		} else {
+			const parentContainer = FaqConatiner.current.parentElement;
+			console.log(parentContainer);
+			const ParentArray = [...parentContainer.children];
+
+			ParentArray.forEach((child) => {
+				child.children[0].classList.remove("FAQuestion_question_active");
+				child.children[1].classList.remove("FAQuestion_answer_active");
+			});
+			ActiveQuestionHead.current.classList.add("FAQuestion_question_active");
+			ActiveQuestionBody.current.classList.add("FAQuestion_answer_active");
+		}
 	};
 	return (
 		<div
+			ref={FaqConatiner}
 			className="bg-gray-700 border-amber-400 border-2 mb-3 w-11/12 rounded overflow-hidden"
 			onClick={handleActive}
 		>

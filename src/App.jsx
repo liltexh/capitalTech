@@ -14,6 +14,7 @@ import "./App.css"; // Make sure to import the CSS file
 
 // DropDown layout import
 import NavBar from "./routes/NavBar.jsx";
+import Profile from "./pages/Profile.jsx";
 // import DropDown from "./layout/Drop-down.jsx";
 
 const NavRouter = createBrowserRouter(
@@ -43,6 +44,10 @@ const NavRouter = createBrowserRouter(
 			<Route
 				path="contact"
 				element={<Contact />}
+			/>
+			<Route
+				path="profile"
+				element={<Profile />}
 			/>
 		</Route>
 	)

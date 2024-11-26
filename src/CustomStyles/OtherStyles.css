@@ -2,7 +2,7 @@
 	display: flex; /* flex */
 	align-items: center;
 	gap: 0.75rem; /* gap-3 */
-	height: 60px;
+	max-height: 60px;
 	padding: 12px 28px;
 	text-align: center;
 	background-color: #374151;
@@ -48,7 +48,7 @@
 	.FAQuestion_question {
 		height: 100px;
 	}
-	
+
 	.FAQuestion_answer_active {
 		display: flex;
 		justify-content: center;

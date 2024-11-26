@@ -15,11 +15,10 @@ export default function NavBar() {
 	const navigate = useNavigate();
 	function displayProfile() {
 		if (Auth.currentUser) {
-			alert("user already craeted");
-			return;
+			navigate("profile");
+		} else {
+			navigate("auth");
 		}
-
-		navigate("auth");
 	}
 	return (
 		<>
@@ -28,11 +27,13 @@ export default function NavBar() {
 			pb-2  z-10  fixed w-screen main-shadow backdrop-blur-md"
 			>
 				<div className="w-full flex items-center justify-between">
-					<img
-						src={logo}
-						alt="logo"
-						className="w-12 rounded-full self-start main-shadow"
-					/>
+					<NavLink to={"/"}>
+						<img
+							src={logo}
+							alt="logo"
+							className="w-12 rounded-full self-start main-shadow"
+						/>
+					</NavLink>
 					<div className="flex gap-6 md:gap-2">
 						<button
 							onClick={displayProfile}

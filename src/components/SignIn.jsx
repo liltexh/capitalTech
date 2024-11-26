@@ -5,6 +5,7 @@ import {
 	verifyEmailInput,
 	RemoveInputError,
 	addInputError,
+	verifyPassword,
 } from "../Tools/userValidation.js";
 import { TypeAnimation } from "react-type-animation";
 
@@ -12,6 +13,7 @@ import "../index.css";
 import PasswordInput from "./PasswordInput.jsx";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { Auth } from "../config/Firebase.js";
+import { useNavigate } from "react-router-dom";
 
 export default function SignIn({ state }) {
 	const { setHasAccount } = state;
@@ -19,14 +21,16 @@ export default function SignIn({ state }) {
 	const [invalidForm, handleInvalidForm] = useState(false);
 
 	const [loading, setLoading] = useState(false);
-	const emailRef = useRef("yes");
+	const emailRef = useRef("");
 	const passwordRef = useRef(null);
+	const navigate = useNavigate();
 	async function logUserIn() {
 		event.preventDefault();
-		const email = emailRef;
-		const password = passwordRef;
+		const email = emailRef.current.value;
+		const password = passwordRef.current.value;
 
 		const UserInputs = checkUserInputs();
+
 		if (!UserInputs) {
 			console.log("invalid form");
 			return;
@@ -34,17 +38,20 @@ export default function SignIn({ state }) {
 
 		setLoading(true);
 		try {
+			console.log("ist starting");
 			const userCredentials = await signInWithEmailAndPassword(
 				Auth,
 				email,
 				password
 			);
 
-			if (userCredentials) {
+			if (userCredentials.user) {
 				alert("user has sign in succefully");
+				navigate("/");
 			}
 		} catch (error) {
 			alert(error.message);
+			console.error(error);
 		}
 	}
 
@@ -61,7 +68,7 @@ export default function SignIn({ state }) {
 			handleInvalidForm(false);
 		}
 
-		if (!passwordRef.current.value) {
+		if (!verifyPassword(passwordRef.current.value)) {
 			addInputError(passwordRef.current.parentElement);
 			handleInvalidForm(true);
 
@@ -70,6 +77,18 @@ export default function SignIn({ state }) {
 			RemoveInputError(passwordRef.current.parentElement);
 			handleInvalidForm(false);
 		}
+
+		if (
+			!verifyEmailInput(email) ||
+			!verifyPassword(passwordRef.current.value)
+		) {
+			handleInvalidForm(true);
+			checker = false;
+		} else {
+			handleInvalidForm(false);
+			console.log("inputa are correct");
+		}
+		return checker;
 	}
 	return (
 		<div className="w-full h-screen flex justify-center items-center mt-32 mb-56">
