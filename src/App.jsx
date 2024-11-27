@@ -9,6 +9,7 @@ import Home from "./pages/Home.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 import About from "./pages/About.jsx";
 import Contact from "./pages/Contact.jsx";
+import InvestmentPage from "./pages/InvestmentPage.jsx";
 import Auth from "./pages/Auth.jsx";
 import "./App.css"; // Make sure to import the CSS file
 
@@ -36,6 +37,10 @@ const NavRouter = createBrowserRouter(
 			<Route
 				path="dashboard"
 				element={<Dashboard />}
+			/>
+			<Route
+				path="plans"
+				element={<InvestmentPage />}
 			/>
 			<Route
 				path="about"

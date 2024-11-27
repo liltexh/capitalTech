@@ -32,6 +32,21 @@ export default function ProfitCalculator() {
 					/>
 				</div>
 				<div className="flex flex-col gap-2 w-10/12">
+					<label
+						htmlFor="RoR"
+						className="font-medium"
+					>
+						All-time Rate of Return (RoR)
+					</label>
+					<input
+						type="text"
+						placeholder="0.00 <input RoR>"
+						id="RoR"
+						className="bg-amber-400 text-white text-start font-medium p-4	rounded
+						h-1/6 outline-none"
+					/>
+				</div>
+				<div className="flex flex-col gap-2 w-10/12">
 					<span className="font-medium">Profit Amount</span>
 					<span
 						className="bg-amber-400 text-yellow-50 text-start font-medium p-4

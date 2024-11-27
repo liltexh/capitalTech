@@ -64,7 +64,9 @@ export default function NavBar() {
 							<li className="n">
 								<NavLink to="dashboard">Dashboard</NavLink>
 							</li>
-							<li className="n">Plans</li>
+							<li className="n">
+								<NavLink to="plans">Plans</NavLink>
+							</li>
 							<li className="n">
 								<NavLink to="contact">Contact Us</NavLink>
 							</li>
@@ -87,7 +89,9 @@ export default function NavBar() {
 						<li className="n">
 							<NavLink to="dashboard">Dashboard</NavLink>
 						</li>
-						<li className="n">Plans</li>
+						<li className="n">
+							<NavLink to="plans">Plans</NavLink>
+						</li>
 						<li className="n">
 							<NavLink to="contact">Contact Us</NavLink>
 						</li>

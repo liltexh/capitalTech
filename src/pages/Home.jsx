@@ -13,6 +13,7 @@ import { goldUSD } from "../Tools/getGoldUSD.js";
 import { useState, useEffect } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import { Auth } from "../config/Firebase.js";
+import { investPlanPrev } from "../data/plans.js";
 export default function Home() {
 	const [currentUser, setCurrentUser] = useState(null);
 	const StockList = [
@@ -21,6 +22,7 @@ export default function Home() {
 		["24-HOUR TRADING VOLUME", "7283.627"],
 		["OUR ACTIVE TRADERS", "5622.62"],
 	];
+
 	useEffect(() => {
 		if (Auth.currentUser) {
 			setCurrentUser(Auth.currentUser);
@@ -121,14 +123,17 @@ export default function Home() {
 					</div>
 				</div>
 			</section>
+
 			<section className="flex flex-col justify-center items-center gap-10 mt-32 mb-24">
 				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 m-auto place-items-center">
-					<InvestmentPlan />
-					<InvestmentPlan />
-					<InvestmentPlan />
-					<InvestmentPlan />
-					<InvestmentPlan />
-					<InvestmentPlan />
+					{investPlanPrev.map((plan, idx) => {
+						return (
+							<InvestmentPlan
+								key={idx}
+								plan={plan}
+							/>
+						);
+					})}
 				</div>
 				<MainButton text="View More Package" />
 			</section>
