@@ -1,13 +1,18 @@
 import logo from "../assets/images/IMG-20241007-WA0033.jpg";
 import profileImg from "../assets/Icons/person-circle-outline.svg";
 import hamburger from "../assets/Icons/hamburger.svg";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import "../CustomStyles/Nav.css";
 import "../index.css";
 import { Auth } from "../config/Firebase";
+import { useContext } from "react";
+import { UserContext } from "../Tools/UserContextProvider";
+import ValidateAccount from "../components/ValidateAccount";
 export default function NavBar() {
+	const { userInfo, handleUserInfo } = useContext(UserContext);
 	const [isOpen, setIsOpen] = useState(false);
+	const [isValidated, setIsValidated] = useState(userInfo.isValidated);
 	const dropdownRef = useRef(null);
 	const ToggleNav = () => {
 		setIsOpen((o) => !isOpen);
@@ -20,6 +25,14 @@ export default function NavBar() {
 			navigate("auth");
 		}
 	}
+	useEffect(() => {
+		setIsValidated(userInfo.isValidated);
+
+		//   return () => {
+		// 	 second
+		//   }
+	}, [userInfo]);
+
 	return (
 		<>
 			<nav
@@ -99,6 +112,11 @@ export default function NavBar() {
 				</div>
 			</nav>
 			<main>
+				{!isValidated && (
+					<div className="front_blur_background w-full h-screen fixed top-0 z-50 flex justify-center items-center">
+						<ValidateAccount />
+					</div>
+				)}
 				<Outlet />
 			</main>
 		</>

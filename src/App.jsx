@@ -5,6 +5,7 @@ import {
 	createRoutesFromElements,
 	RouterProvider,
 } from "react-router-dom";
+import UserContextProvider from "./Tools/UserContextProvider.jsx";
 import Home from "./pages/Home.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 import About from "./pages/About.jsx";
@@ -62,9 +63,11 @@ function App() {
 	return (
 		<>
 			<BgAnimation />
-			<div className="overflow-hidden">
-				<RouterProvider router={NavRouter} />
-			</div>
+			<UserContextProvider>
+				<div className="overflow-hidden">
+					<RouterProvider router={NavRouter} />
+				</div>
+			</UserContextProvider>
 		</>
 	);
 }

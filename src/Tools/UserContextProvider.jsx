@@ -1,13 +1,26 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
+import { Auth } from "../config/Firebase";
 
 export const UserContext = createContext();
 
 export function userContextValue() {
-	const userDetails = {
+	// const userDetails = {
+	// 	UserName: "",
+	// 	email: "",
+	// 	isValidated: true,
+	// };
+	const [userInfo, handleUserInfo] = useState({
 		UserName: "",
 		email: "",
-	};
-	const [userInfo, handleUserInfo] = useState(userDetails);
+		isValidated: true,
+	});
+
+	useEffect(() => {
+		handleUserInfo((info) => ({
+			...info,
+			email: Auth.currentUser?.email || "",
+		}));
+	}, []);
 	return { userInfo, handleUserInfo };
 }
 
