@@ -91,7 +91,7 @@ export default function SignIn({ state }) {
 		return checker;
 	}
 	return (
-		<div className="w-full h-screen flex justify-center items-center mt-32 mb-56">
+		<div className="w-full h-screen flex justify-center items-center mt-36 mb-32">
 			{invalidForm && (
 				<span
 					style={{ backgroundColor: "rgba(0,0,0,0.1)" }}

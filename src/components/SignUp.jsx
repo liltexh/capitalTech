@@ -107,7 +107,7 @@ export default function SignUp({ state }) {
 	}, []);
 
 	return (
-		<div className="w-full h-screen flex justify-center items-center mt-32 mb-56 ">
+		<div className="w-full h-screen flex justify-center items-center mt-40 mb-32">
 			{invalidForm && (
 				<span
 					style={{ backgroundColor: "rgba(0,0,0,0.1)" }}
