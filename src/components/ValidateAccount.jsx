@@ -17,22 +17,24 @@ export default function ValidateAccount() {
 	}
 	return (
 		<div
-			className={` glowing_shadow flex flex-col justify-center items-center gap-6 max-w-96 p-4 m-3 rounded-md transition-all duration-200 ${
-				verifyUser ? "h-1/5" : "h-4/5"
+			className={` glowing_shadow flex flex-col justify-center items-center max-w-96 p-4 pt-12 pb-16 m-3 rounded-md transition-all duration-200 ${
+				verifyUser ? "h-4" : "h-96"
 			}`}
 		>
 			{!verifyUser && (
 				<>
-					<h1 className="text-3xl text-amber-400 font-bold">Capital Tech</h1>
-					<h2 className="text-2xl font-semibold text-red-700 text-center">
+					<h1 className="text-3xl text-amber-400 font-bold leading-relaxed">
+						Capital Tech
+					</h1>
+					<h2 className="text-2xl font-semibold text-red-700 text-center mb-6">
 						Verify Your Email Address
 					</h2>
-					<p className="opacity-70">
-						To ensure the security of your account and provide you with seamless
-						access to our service, we need to verify your email address, this
-						helps to confirm your identity and keep your account protected..
+					<p className="opacity-70 mb-2 text-sm">
+						To secure your account and provide you with seamless access to our
+						service, we need to verify your email to confirm your identity and
+						keep your account protected..
 					</p>
-					<p className="font-semibold">
+					<p className="font-semibold mb-10">
 						Please verify your email to complete your registration and unlock
 						all features of your investment account...
 					</p>
@@ -46,7 +48,7 @@ export default function ValidateAccount() {
 			{verifyUser && (
 				<div
 					onMouseLeave={UpdateValidateUser}
-					onTouchCancel={UpdateValidateUser}
+					onTouchEnd={UpdateValidateUser}
 				>
 					<h1>Check your email for a verification Message</h1>
 				</div>

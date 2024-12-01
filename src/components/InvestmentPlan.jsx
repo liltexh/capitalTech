@@ -2,12 +2,12 @@ import crownBg from "../assets/images/crown1.jpg";
 
 import MainButton from "./MainButton.jsx";
 
-import "../index.css";
 import { useContext, useEffect, useState } from "react";
 import { Auth } from "../config/Firebase.js";
 import { UserContext } from "../Tools/UserContextProvider.jsx";
 import { useNavigate } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
+import "../index.css";
 export default function InvestmentPlan({ plan }) {
 	// console.log(plan);
 	const [currentUser, setCurrentUser] = useState(null);
