@@ -7,7 +7,7 @@ export default function InvestmentPage() {
 		// console.log(InvestPlans);
 	}, []);
 	return (
-		<section className="flex flex-col justify-center items-center gap-10 mt-32 mb-24">
+		<section className="flex flex-col w-full justify-center items-center gap-10 mt-32 mb-24">
 			<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 m-auto place-items-center">
 				{InvestPlans.map((plan, idx) => {
 					return (

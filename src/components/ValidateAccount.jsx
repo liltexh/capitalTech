@@ -17,15 +17,12 @@ export default function ValidateAccount() {
 	}
 	return (
 		<div
-			className={` glowing_shadow flex flex-col justify-center items-center max-w-96 p-4 pt-12 pb-16 m-3 rounded-md  ${
+			className={` glowing_shadow flex flex-col justify-center items-center max-w-96 p-8 m-3 rounded-md  ${
 				verifyUser ? "h-4" : "h-fit"
 			}`}
 		>
 			{!verifyUser && (
 				<>
-					<h1 className="text-3xl text-amber-400 font-bold leading-relaxed">
-						Capital Tech
-					</h1>
 					<h2 className="text-2xl font-semibold text-red-700 text-center mb-6">
 						Verify Your Email Address
 					</h2>

@@ -103,7 +103,8 @@ body {
 
 .Plan_card {
 	position: relative;
-	width: 22rem;
+	min-width: 21rem;
+
 	height: 30rem;
 	background-size: cover;
 	background-position: center;
