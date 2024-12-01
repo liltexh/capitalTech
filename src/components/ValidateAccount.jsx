@@ -17,8 +17,8 @@ export default function ValidateAccount() {
 	}
 	return (
 		<div
-			className={` glowing_shadow flex flex-col justify-center items-center max-w-96 p-4 pt-12 pb-16 m-3 rounded-md transition-all duration-200 ${
-				verifyUser ? "h-4" : "h-96"
+			className={` glowing_shadow flex flex-col justify-center items-center max-w-96 p-4 pt-12 pb-16 m-3 rounded-md  ${
+				verifyUser ? "h-4" : "h-fit"
 			}`}
 		>
 			{!verifyUser && (
