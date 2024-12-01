@@ -26,14 +26,16 @@ export default function ValidateAccount() {
 					<h2 className="text-2xl font-semibold text-red-700 text-center mb-6">
 						Verify Your Email Address
 					</h2>
-					<p className="opacity-70 mb-2 text-sm">
-						To secure your account and provide you with seamless access to our
-						service, we need to verify your email to confirm your identity and
-						keep your account protected..
-					</p>
-					<p className="font-semibold mb-10">
+
+					<p className="font-semibold mb-2">
 						Please verify your email to complete your registration and unlock
 						all features of your investment account...
+					</p>
+
+					<p className="opacity-70 mb-10 text-sm">
+						To ensure a secured account and provide you with seamless access to
+						our service, we need to verify your email to confirm your identity
+						and keep your account protected..
 					</p>
 					<MainButton
 						text="Verify my email"
