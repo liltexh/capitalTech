@@ -54,9 +54,9 @@ Shadow */
 
 body {
 	background-color: var(--background-color);
-	/* font-family: var(--fontF-secondary); */
-	font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
-		"Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	font-family: var(--fontF-secondary);
+	/* font-family: sans-serif, "Apple Color Emoji", "Segoe UI Emoji", */
+	/* "Segoe UI Symbol", "Noto Color Emoji"; */
 	z-index: -99999;
 }
 
