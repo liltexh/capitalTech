@@ -13,6 +13,7 @@ export function userContextValue() {
 		UserName: "",
 		email: "",
 		isValidated: true,
+		isLoading: false,
 	});
 
 	useEffect(() => {

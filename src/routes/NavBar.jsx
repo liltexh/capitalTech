@@ -9,10 +9,12 @@ import { Auth } from "../config/Firebase";
 import { useContext } from "react";
 import { UserContext } from "../Tools/UserContextProvider";
 import ValidateAccount from "../components/ValidateAccount";
+import Loading from "../components/Loading";
 export default function NavBar() {
 	const { userInfo, handleUserInfo } = useContext(UserContext);
 	const [isOpen, setIsOpen] = useState(false);
 	const [isValidated, setIsValidated] = useState(userInfo.isValidated);
+	const [isLoading, setIsLoading] = useState(userInfo.isLoading);
 	const dropdownRef = useRef(null);
 	const ToggleNav = () => {
 		setIsOpen((o) => !isOpen);
@@ -33,6 +35,9 @@ export default function NavBar() {
 		//   }
 	}, [userInfo]);
 
+	useEffect(() => {
+		setIsLoading(userInfo.isLoading);
+	}, [userInfo]);
 	return (
 		<>
 			<nav
@@ -115,6 +120,14 @@ export default function NavBar() {
 				{!isValidated && (
 					<div className="front_blur_background w-full h-screen fixed top-0 z-50 flex justify-center items-center">
 						<ValidateAccount />
+					</div>
+				)}
+				{isLoading && (
+					<div
+						className="z-[900] front_blur_background fixed top-0
+"
+					>
+						<Loading />
 					</div>
 				)}
 				<Outlet />

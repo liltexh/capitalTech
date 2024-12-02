@@ -9,18 +9,21 @@ import {
 } from "../Tools/userValidation.js";
 import { TypeAnimation } from "react-type-animation";
 
-import "../index.css";
 import PasswordInput from "./PasswordInput.jsx";
+import Loading from "./Loading.jsx";
+
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { Auth } from "../config/Firebase.js";
 import { useNavigate } from "react-router-dom";
+import "../index.css";
 
 export default function SignIn({ state }) {
 	const { setHasAccount } = state;
 	const [passwordType, setPasswordType] = useState("password");
 	const [invalidForm, handleInvalidForm] = useState(false);
 
-	const [loading, setLoading] = useState(false);
+	const [isloading, setIsLoading] = useState(true);
+
 	const emailRef = useRef("");
 	const passwordRef = useRef(null);
 	const navigate = useNavigate();
