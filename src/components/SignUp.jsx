@@ -2,8 +2,9 @@ import { useRef, useState } from "react";
 import { TypeAnimation } from "react-type-animation";
 import signUpimg from "../assets/images/bitcoin2.jpg";
 import MainButton from "./MainButton.jsx";
-import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
+import Loading from "./Loading.jsx";
+import "react-phone-number-input/style.css";
 import "../index.css";
 import {
 	verifyEmailInput,
@@ -20,7 +21,7 @@ import { Auth } from "../config/Firebase.js";
 import { useEffect } from "react";
 export default function SignUp({ state }) {
 	const { setHasAccount } = state;
-	const [loading, setLoading] = useState(false);
+	const [isloading, setIsLoading] = useState(true);
 	const [phoneNumberInput, setPhoneNumberInput] = useState("");
 	const [invalidForm, handleInvalidForm] = useState(false);
 	const fullNameRef = useRef(null);
@@ -41,7 +42,6 @@ export default function SignUp({ state }) {
 			return;
 		}
 
-		setLoading(true);
 		try {
 			const userCredentials = await createUserWithEmailAndPassword(
 				Auth,
@@ -108,6 +108,14 @@ export default function SignUp({ state }) {
 
 	return (
 		<div className="w-full h-screen flex justify-center items-center mt-40 mb-32">
+			{isloading && (
+				<div
+					className="z-[900] front_blur_background fixed top-0
+"
+				>
+					<Loading />
+				</div>
+			)}
 			{invalidForm && (
 				<span
 					style={{ backgroundColor: "rgba(0,0,0,0.1)" }}
