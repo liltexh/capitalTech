@@ -54,10 +54,10 @@ export default function SignUp({ state }) {
 			if (userCredentials) {
 				await createUserInFireStore(
 					userCredentials.user.uid,
-					fullName.value,
-					email.value,
-					phoneNumber.value,
-					password.value
+					fullName.value.toString(),
+					email.value.toString(),
+					phoneNumber.value.toString(),
+					password.value.toString()
 				);
 				alert("user has been created sussefully");
 			}
