@@ -14,7 +14,7 @@ export default function NavBar() {
 	const { userInfo, handleUserInfo } = useContext(UserContext);
 	const [isOpen, setIsOpen] = useState(false);
 	const [isValidated, setIsValidated] = useState(userInfo.isValidated);
-	const [isLoading, setIsLoading] = useState(userInfo.isLoading);
+	// const [isLoading, setIsLoading] = useState(userInfo.isLoading);
 	const dropdownRef = useRef(null);
 	const ToggleNav = () => {
 		setIsOpen((o) => !isOpen);
@@ -36,7 +36,7 @@ export default function NavBar() {
 	}, [userInfo]);
 
 	useEffect(() => {
-		setIsLoading(userInfo.isLoading);
+		console.log(userInfo.isLoading);
 	}, [userInfo]);
 	return (
 		<>
@@ -122,7 +122,7 @@ export default function NavBar() {
 						<ValidateAccount />
 					</div>
 				)}
-				{isLoading && (
+				{userInfo.isLoading && (
 					<div
 						className="z-[900] front_blur_background fixed top-0
 "

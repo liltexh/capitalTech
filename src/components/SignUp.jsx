@@ -19,9 +19,12 @@ import { createUserInFireStore } from "../Tools/firestoreFunctions.js";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { Auth } from "../config/Firebase.js";
 import { useEffect } from "react";
+import LoadingAnimation from "../Tools/LoadingAnimation.js";
+
 export default function SignUp({ state }) {
 	const { setHasAccount } = state;
-	const [isloading, setIsLoading] = useState(true);
+	const { startLoading, stopLoading } = LoadingAnimation();
+
 	const [phoneNumberInput, setPhoneNumberInput] = useState("");
 	const [invalidForm, handleInvalidForm] = useState(false);
 	const fullNameRef = useRef(null);
@@ -102,20 +105,12 @@ export default function SignUp({ state }) {
 		return checker;
 	}
 
-	useEffect(() => {
-		console.log(Auth);
-	}, []);
+	// useEffect(() => {
+	// 	console.log(Auth);
+	// }, []);
 
 	return (
 		<div className="w-full h-screen flex justify-center items-center mt-40 mb-32">
-			{isloading && (
-				<div
-					className="z-[900] front_blur_background fixed top-0
-"
-				>
-					<Loading />
-				</div>
-			)}
 			{invalidForm && (
 				<span
 					style={{ backgroundColor: "rgba(0,0,0,0.1)" }}

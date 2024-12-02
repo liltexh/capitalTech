@@ -1,6 +1,6 @@
 import signUpimg from "../assets/images/bitcoin2.jpg";
 import MainButton from "./MainButton.jsx";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect, useContext } from "react";
 import {
 	verifyEmailInput,
 	RemoveInputError,
@@ -10,19 +10,21 @@ import {
 import { TypeAnimation } from "react-type-animation";
 
 import PasswordInput from "./PasswordInput.jsx";
-import Loading from "./Loading.jsx";
+// import Loading from "./Loading.jsx";
 
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { Auth } from "../config/Firebase.js";
 import { useNavigate } from "react-router-dom";
 import "../index.css";
+import LoadingAnimation from "../Tools/LoadingAnimation.js";
+import { UserContext } from "../Tools/UserContextProvider.jsx";
 
 export default function SignIn({ state }) {
 	const { setHasAccount } = state;
 	const [passwordType, setPasswordType] = useState("password");
 	const [invalidForm, handleInvalidForm] = useState(false);
 
-	const [isloading, setIsLoading] = useState(true);
+	const { startLoading, stopLoading } = LoadingAnimation();
 
 	const emailRef = useRef("");
 	const passwordRef = useRef(null);
@@ -39,8 +41,10 @@ export default function SignIn({ state }) {
 			return;
 		}
 
-		setLoading(true);
+		// setLoading(true);
 		try {
+			startLoading();
+
 			console.log("ist starting");
 			const userCredentials = await signInWithEmailAndPassword(
 				Auth,
@@ -49,10 +53,12 @@ export default function SignIn({ state }) {
 			);
 
 			if (userCredentials.user) {
+				stopLoading();
 				alert("user has sign in succefully");
 				navigate("/");
 			}
 		} catch (error) {
+			stopLoading();
 			alert(error.message);
 			console.error(error);
 		}
@@ -93,6 +99,11 @@ export default function SignIn({ state }) {
 		}
 		return checker;
 	}
+
+	const { userInfo, handleUserInfo } = useContext(UserContext);
+	useEffect(() => {
+		console.log(userInfo.isloading);
+	}, []);
 	return (
 		<div className="w-full h-screen flex justify-center items-center mt-36 mb-32">
 			{invalidForm && (
