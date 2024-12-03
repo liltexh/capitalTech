@@ -46,6 +46,7 @@ export default function SignUp({ state }) {
 		}
 
 		try {
+			startLoading();
 			const userCredentials = await createUserWithEmailAndPassword(
 				Auth,
 				email.value.toLocaleLowerCase(),
@@ -59,9 +60,13 @@ export default function SignUp({ state }) {
 					phoneNumber.value.toString(),
 					password.value.toString()
 				);
+				stopLoading();
 				alert("user has been created sussefully");
 			}
-		} catch (error) {}
+		} catch (error) {
+			stopLoading();
+			alert(error.message);
+		}
 	}
 
 	function checkUserInputs() {
