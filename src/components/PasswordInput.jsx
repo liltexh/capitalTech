@@ -14,7 +14,7 @@ function PasswordInput({ state }) {
 				type={passwordType}
 				placeholder="Enter Password"
 				ref={passwordRef}
-				className="bg-transparent h-9 p-5 flex-1 mr-2 outline-none	"
+				className="bg-transparent h-9 p-5 flex-1 mr-2 outline-none	min-w-1"
 			/>
 			<button
 				type="button"
