@@ -82,13 +82,14 @@ export default function CheckOut() {
 							</div>
 						</div>
 						<div className="flex justify-center items-center gap-4">
-							<span>
+							<span className="">
 								<img
 									src={cardIcon}
 									alt="card icon"
 									width="30px"
+									className=""
 								/>
-								card
+								<p>Card</p>
 							</span>
 							<span>
 								<img
@@ -96,7 +97,7 @@ export default function CheckOut() {
 									alt="card icon"
 									width="30px"
 								/>
-								bank
+								<p>Bank</p>
 							</span>
 							<span>
 								<img
@@ -104,7 +105,7 @@ export default function CheckOut() {
 									alt="card icon"
 									width="30px"
 								/>
-								crypto
+								Crypto
 							</span>
 						</div>
 					</div>
