@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PayWithButton from "../components/PaywithButton";
 import { infoIcon, bankIcon, cardIcon, cryptoIcon } from "../Tools/icons";
 
 export default function CheckOut() {
@@ -74,7 +75,7 @@ export default function CheckOut() {
 										width="28px"
 									/>
 								</span>
-								<p className="">
+								<p className="text-lg">
 									The basic growth ivestment plan is the best plan for money
 									with an excellent return rate , this will in no time give you
 									back uor capital and even more
@@ -82,54 +83,21 @@ export default function CheckOut() {
 							</div>
 						</div>
 						<div className="inline-flex justify-center items-center gap-10 mt-8">
-							<span className="flex flex-col justify-center items-center relative z-10 group">
-								<span className=" flex h-14 w-14 bg-gray-700 group-hover:bg-amber-400 group-hover:shadow-box-shadow rounded-full text-center justify-center items-center cursor-pointer relative z-10">
-									<img
-										src={cardIcon}
-										alt="card icon"
-										width="30px"
-										className=""
-									/>
-								</span>
-								<p
-									className="text-amber-400 px-2 font-semibold absolute top-0 rounded border-b-[3px] border-b-amber-400 opacity-0 group-hover:opacity-100 group-hover:-top-10 pointer-events-none group-hover:pointer-events-auto before:absolute before:content-['']
-								before:w-3 before:h-3 before:left-[50%] before:bg-amber-400 before:-bottom-2 before:transform before:-translate-x-[50%] before:rotate-[135deg] before:clip-path-diagonal-slice  transition-all duration-500 ease-[cubic-bezier(0.68,-0.55,0.265,1.55)]"
-								>
-									Card
-								</p>
-							</span>
-							<span className="flex flex-col justify-center items-center relative z-10 group">
-								<span className=" flex h-14 w-14 bg-gray-700 group-hover:bg-amber-400 group-hover:shadow-box-shadow rounded-full text-center justify-center items-center cursor-pointer relative z-10">
-									<img
-										src={bankIcon}
-										alt="bank icon"
-										width="25px"
-										className=""
-									/>
-								</span>
-								<p
-									className="text-amber-400 px-2 font-semibold absolute top-0 rounded border-b-[3px] border-b-amber-400 opacity-0 group-hover:opacity-100 group-hover:-top-10 pointer-events-none group-hover:pointer-events-auto before:absolute before:content-['']
-								before:w-3 before:h-3 before:left-[50%] before:bg-amber-400 before:-bottom-2 before:transform before:-translate-x-[50%] before:rotate-[135deg] before:clip-path-diagonal-slice  transition-all duration-500 ease-[cubic-bezier(0.68,-0.55,0.265,1.55)]"
-								>
-									Bank
-								</p>
-							</span>
-							<span className="flex flex-col justify-center items-center relative z-10 group">
-								<span className=" flex h-14 w-14 bg-gray-700 group-hover:bg-amber-400 group-hover:shadow-box-shadow rounded-full text-center justify-center items-center cursor-pointer relative z-10">
-									<img
-										src={cryptoIcon}
-										alt="crypto icon"
-										width="28px"
-										className=""
-									/>
-								</span>
-								<p
-									className="text-amber-400 px-2 font-semibold absolute top-0 rounded border-b-[3px] border-b-amber-400 opacity-0 group-hover:opacity-100 group-hover:-top-10 pointer-events-none group-hover:pointer-events-auto before:absolute before:content-['']
-								before:w-3 before:h-3 before:left-[50%] before:bg-amber-400 before:-bottom-2 before:transform before:-translate-x-[50%] before:rotate-[135deg] before:clip-path-diagonal-slice  transition-all duration-500 ease-[cubic-bezier(0.68,-0.55,0.265,1.55)]"
-								>
-									Crypto
-								</p>
-							</span>
+							<PayWithButton
+								icon={cardIcon}
+								info="Card"
+								width="30px"
+							/>
+							<PayWithButton
+								icon={bankIcon}
+								info="Bank"
+								width="25px"
+							/>
+							<PayWithButton
+								icon={cryptoIcon}
+								info="Crypto"
+								width="28px"
+							/>
 						</div>
 					</div>
 				)}
