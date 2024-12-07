@@ -294,7 +294,7 @@ function ExpertTeamComp() {
 					return (
 						<div
 							key={idx}
-							className="flex flex-col justify-center gap-5 mb-12 bg-gray-800 p-3
+							className="flex flex-col justify-center gap-5 mb-12 bg-gray-800 hover:bg-amber-400 hover:shadow-box-shadow p-3 hover:scale-[1.03] transition-all duration-300
 							rounded-xl md:ml-10 md:mr-10 lg:ml-10 lg:mr-10"
 						>
 							<img

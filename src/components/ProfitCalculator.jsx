@@ -31,7 +31,7 @@ export default function ProfitCalculator() {
 						h-1/6 outline-none"
 					/>
 				</div>
-				<div className="flex flex-col gap-2 w-10/12">
+				{/* <div className="flex flex-col gap-2 w-10/12">
 					<label
 						htmlFor="RoR"
 						className="font-medium"
@@ -45,7 +45,7 @@ export default function ProfitCalculator() {
 						className="bg-amber-400 text-white text-start font-medium p-4	rounded
 						h-1/6 outline-none"
 					/>
-				</div>
+				</div> */}
 				<div className="flex flex-col gap-2 w-10/12">
 					<span className="font-medium">Profit Amount</span>
 					<span
