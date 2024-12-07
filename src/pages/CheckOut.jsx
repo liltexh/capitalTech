@@ -6,23 +6,23 @@ export default function CheckOut() {
 	const [page, setPage] = useState(1);
 	return (
 		<main className="w-full min-h-screen flex flex-col justify-center items-center px-6 pt-24 m-auto gap-10 ">
-			<div className="flex gap-8">
+			<div className="flex gap-10">
 				<span
-					className={`relative w-6 scale-150 text-center rounded-full  ${
+					className={`relative w-6 scale-[1.8] text-center rounded-full  ${
 						page == 1 ? "bg-amber-400" : "bg-gray-700"
 					}`}
 				>
 					1
 				</span>
 				<span
-					className={`relative w-6 scale-150 text-center rounded-full  ${
+					className={`relative w-6 scale-[1.8] text-center rounded-full  ${
 						page == 2 ? "bg-amber-400" : "bg-gray-700"
 					}`}
 				>
 					2
 				</span>
 				<span
-					className={`relative w-6 scale-150 text-center rounded-full  ${
+					className={`relative w-6 scale-[1.8] text-center rounded-full  ${
 						page == 3 ? "bg-amber-400" : "bg-gray-700"
 					}`}
 				>

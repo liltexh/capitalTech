@@ -150,7 +150,7 @@ export default function SignIn({ state }) {
 						<h2 className="text-2xl font-semibold">
 							Welcome To <span className="text-amber-400">Capital Tech</span>
 						</h2>
-						<p>
+						<p className="opacity-70 hover:opacity-100 transition-opacity duration-300">
 							Lorem ipsum dolor sit amet, consectetur adipisicing elit.
 							Blanditiis distinctio delectus repellendus totam obcaecati soluta
 							dignissimos, reprehenderit nostrum quia hic.
