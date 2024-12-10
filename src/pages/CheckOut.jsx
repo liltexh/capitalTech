@@ -5,8 +5,8 @@ import PaymentOther from "../components/PaymentOther";
 import PaymentPage3 from "../components/PaymentPage3";
 
 export default function CheckOut() {
-	const [page, setPage] = useState(3);
-	const [paymentMethod, setPaymentMethod] = useState("crypto");
+	const [page, setPage] = useState(2);
+	const [paymentMethod, setPaymentMethod] = useState("card");
 	return (
 		<main className="relative w-full min-h-screen flex flex-col justify-center items-center px-6 pt-40 m-auto gap-10 ">
 			<div className="flex gap-10 absolute top-24">
