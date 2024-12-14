@@ -5,7 +5,7 @@ import PaymentOther from "../components/PaymentOther";
 import PaymentPage3 from "../components/PaymentPage3";
 
 export default function CheckOut() {
-	const [page, setPage] = useState(2);
+	const [page, setPage] = useState(1);
 	const [paymentMethod, setPaymentMethod] = useState("card");
 	return (
 		<main className="relative w-full min-h-screen flex flex-col justify-center items-center px-6 pt-40 m-auto gap-10 ">

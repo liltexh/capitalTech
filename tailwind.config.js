@@ -10,6 +10,9 @@ export default {
 			boxShadow: {
 				"box-shadow": "0 0 16px rgba(240, 203, 70, 0.7)",
 			},
+			flex: {
+				2: "2 2 0%",
+			},
 		},
 	},
 	plugins: [require("tailwind-clip-path")],
